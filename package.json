@@ -1,0 +1,17 @@
+{
+  "name": "sindoh-cloud-company-site",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "postinstall": "node scripts/patch-vite-windows.mjs",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "astro": "^5.8.1",
+    "typescript": "^5.8.3"
+  }
+}

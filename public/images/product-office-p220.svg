@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420">
+  <rect width="640" height="420" fill="#f4efe4"/>
+  <rect x="185" y="154" width="270" height="112" rx="18" fill="#41514c"/>
+  <rect x="206" y="132" width="228" height="38" rx="10" fill="#eef3ef"/>
+  <rect x="234" y="194" width="172" height="38" rx="10" fill="#d4e0da"/>
+  <text x="54" y="80" fill="#0f4c45" font-size="30" font-family="Arial, sans-serif">MONO PRINTER</text>
+</svg>

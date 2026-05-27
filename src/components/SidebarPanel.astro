@@ -1,0 +1,34 @@
+---
+import { company, sidebarItems } from "../data/company";
+
+interface Props {
+  activeKey?: string;
+  showButton?: boolean;
+}
+
+const { activeKey = "", showButton = true } = Astro.props;
+---
+
+<aside class="hero-catalog__panel sidebar-panel">
+  <div class="hero-catalog__block">
+    <p class="hero-catalog__label">PRODUCT</p>
+    <ul class="hero-catalog__menu">
+      {
+        sidebarItems.map((item) => (
+          <li>
+            <a class:list={["hero-catalog__menu-link", activeKey === item.key && "is-active"]} href={item.href}>
+              <strong>{item.label}</strong>
+              <span>{item.section}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <div class="hero-catalog__block hero-catalog__block--dark">
+    <p class="hero-catalog__label">CUSTOMER CENTER</p>
+    <strong>{company.phone}</strong>
+    <span>{company.hours}</span>
+    {showButton && <a class="button button--light" href="/contact">문의안내</a>}
+  </div>
+</aside>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420">
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#e7efe9"/>
+      <stop offset="100%" stop-color="#f6f0e6"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="420" fill="url(#bg)"/>
+  <rect x="194" y="110" width="252" height="180" rx="18" fill="#243532"/>
+  <rect x="214" y="128" width="212" height="20" rx="10" fill="#57756c"/>
+  <rect x="224" y="170" width="192" height="100" rx="12" fill="#f7f4ec"/>
+  <rect x="178" y="292" width="284" height="26" rx="13" fill="#c4d4cc"/>
+  <text x="54" y="72" fill="#0f4c45" font-size="32" font-family="Arial, sans-serif">A3 COLOR MFP</text>
+</svg>

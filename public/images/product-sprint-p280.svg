@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420">
+  <rect width="640" height="420" fill="#e4ece6"/>
+  <rect x="178" y="150" width="284" height="120" rx="20" fill="#0f4c45"/>
+  <rect x="206" y="128" width="228" height="42" rx="12" fill="#f8f5ed"/>
+  <rect x="232" y="190" width="176" height="46" rx="12" fill="#bfd0c7"/>
+  <text x="58" y="78" fill="#0f4c45" font-size="32" font-family="Arial, sans-serif">COLOR PRINTER</text>
+</svg>

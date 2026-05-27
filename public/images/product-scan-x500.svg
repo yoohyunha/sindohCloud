@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420">
+  <rect width="640" height="420" fill="#e8efe8"/>
+  <rect x="170" y="166" width="300" height="86" rx="22" fill="#103a35"/>
+  <path d="M205 153h230l28 20H177l28-20z" fill="#56736b"/>
+  <rect x="226" y="182" width="188" height="20" rx="10" fill="#f9f6ee"/>
+  <rect x="250" y="216" width="140" height="12" rx="6" fill="#b8cbc2"/>
+  <text x="54" y="78" fill="#0f4c45" font-size="30" font-family="Arial, sans-serif">DOCUMENT SCANNER</text>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420">
+  <rect width="640" height="420" fill="#f3eee3"/>
+  <rect x="190" y="118" width="260" height="170" rx="16" fill="#32413d"/>
+  <rect x="216" y="142" width="208" height="44" rx="12" fill="#d8e2dc"/>
+  <rect x="222" y="198" width="196" height="58" rx="10" fill="#fdfcf8"/>
+  <rect x="172" y="290" width="296" height="24" rx="12" fill="#c7d5ce"/>
+  <text x="56" y="78" fill="#0f4c45" font-size="30" font-family="Arial, sans-serif">A4 MONO MFP</text>
+</svg>

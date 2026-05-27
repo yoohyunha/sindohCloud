@@ -1,0 +1,97 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import ProductCard from "../components/ProductCard.astro";
+import ContactPanel from "../components/ContactPanel.astro";
+import HeroProductShowcase from "../components/HeroProductShowcase.astro";
+import SidebarPanel from "../components/SidebarPanel.astro";
+import { company } from "../data/company";
+import { featuredProducts } from "../data/products";
+---
+
+<BaseLayout
+  title={`${company.name} | OA 솔루션과 제품 안내`}
+  description={company.summary}
+  path="/"
+>
+  <section class="hero hero--catalog">
+    <div class="container hero-catalog">
+      <SidebarPanel />
+
+      <div class="hero-catalog__main">
+        <div class="hero-catalog__intro">
+          <p class="hero__eyebrow">SINDOH CLOUD</p>
+          <h1>맞춤형 판매 및 임대서비스</h1>
+          <p class="hero__description">
+            각종 복합기, 프린터, 사무기기 최저가에 임대/판매합니다
+          </p>
+          <div class="hero__actions">
+            <a class="button" href="/products">제품목록 보기</a>
+            <a class="button button--ghost" href="https://smartstore.naver.com/royaloa" target="_blank" rel="noreferrer">네이버 스토어</a>
+          </div>
+        </div>
+
+        <HeroProductShowcase product={featuredProducts[0]} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="회사 소개"
+        title="신도 클라우드"
+        description={company.description}
+      />
+      <div class="feature-grid">
+        {
+          company.categories.map((category) => (
+            <article class="feature-card">
+              <h3>{category.name}</h3>
+              <p>{category.description}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <SectionHeading
+        eyebrow="고객지원"
+        title="임대 · 유지보수 안내"
+        description="초기 비용 부담을 줄이는 렌탈 서비스와 안정적인 운용을 위한 유지보수 안내를 별도 페이지로 연결합니다."
+      />
+      <div class="service-preview">
+        <a class="service-preview__card service-preview__card--rental" href="/service">
+          <span class="service-preview__label">Rental Service</span>
+          <h3>임대(렌탈)서비스</h3>
+          <p>초기 구매비용 절감, 정기점검, 이력관리, 신속한 장애 대응까지 한 흐름으로 안내합니다.</p>
+        </a>
+        <a class="service-preview__card service-preview__card--maintenance" href="/service">
+          <span class="service-preview__label">Maintenance</span>
+          <h3>유지보수 서비스</h3>
+          <p>정기 예방점검, 소모품 및 부품 관리, 빠른 서비스 대응으로 안정적인 장비 운영을 지원합니다.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="제품 소개"
+        title="대표 제품"
+        description=""
+      />
+      <div class="product-grid">
+        {featuredProducts.map((product) => <ProductCard product={product} />)}
+      </div>
+    </div>
+  </section>
+
+  <div class="container section">
+    <ContactPanel />
+  </div>
+</BaseLayout>

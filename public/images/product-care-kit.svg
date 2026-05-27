@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420">
+  <rect width="640" height="420" fill="#f2eee4"/>
+  <rect x="182" y="154" width="108" height="118" rx="18" fill="#0f4c45"/>
+  <rect x="302" y="132" width="156" height="140" rx="18" fill="#2f7a6f"/>
+  <rect x="228" y="138" width="182" height="28" rx="14" fill="#dfe9e3"/>
+  <text x="58" y="78" fill="#0f4c45" font-size="32" font-family="Arial, sans-serif">SUPPLIES KIT</text>
+</svg>

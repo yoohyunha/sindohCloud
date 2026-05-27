@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SidebarPanel from "../components/SidebarPanel.astro";
+import { company } from "../data/company";
+import { maintenanceServiceItems, rentalServiceItems } from "../data/service";
+import ServiceAccordion from "../components/ServiceAccordion.astro";
+---
+
+<BaseLayout
+  title={`${company.name} | 임대·유지보수안내`}
+  description="임대(렌탈) 서비스와 유지보수 서비스 안내"
+  path="/service"
+>
+  <section class="service-page">
+    <div class="container service-page__grid">
+      <SidebarPanel activeKey="rental" />
+
+      <div class="service-content">
+        <div class="service-content__header">
+          <div>
+            <p class="service-content__eyebrow">SERVICE GUIDE</p>
+            <h1>임대·유지보수안내</h1>
+          </div>
+          <p class="service-content__crumb">HOME &gt; 임대·유지보수안내</p>
+        </div>
+
+        <div class="service-tabs" role="tablist" aria-label="서비스 탭">
+          <button class="service-tab is-active" type="button" data-service-tab="rental" role="tab" aria-selected="true">
+            임대(렌탈)서비스
+          </button>
+          <button class="service-tab" type="button" data-service-tab="maintenance" role="tab" aria-selected="false">
+            유지보수 서비스
+          </button>
+        </div>
+
+        <section class="service-panel is-active" data-service-panel="rental">
+          <div class="service-section__heading">
+            <div>
+              <p class="service-section__eyebrow">Rental Service</p>
+              <h2>임대(렌탈)서비스</h2>
+            </div>
+            <div class="service-visual service-visual--rental">
+              <div>
+                <span>Initial Cost Down</span>
+                <strong>초기 부담을 낮추고 관리까지 연결</strong>
+              </div>
+            </div>
+          </div>
+          <ServiceAccordion items={rentalServiceItems} />
+        </section>
+
+        <section class="service-panel" data-service-panel="maintenance" hidden>
+          <div class="service-section__heading">
+            <div>
+              <p class="service-section__eyebrow">Maintenance</p>
+              <h2>유지보수 서비스</h2>
+            </div>
+            <div class="service-visual service-visual--maintenance">
+              <div>
+                <span>Preventive Care</span>
+                <strong>정기점검과 빠른 대응으로 안정적인 운영</strong>
+              </div>
+            </div>
+          </div>
+          <ServiceAccordion items={maintenanceServiceItems} />
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    (() => {
+      const tabs = Array.from(document.querySelectorAll("[data-service-tab]"));
+      const panels = Array.from(document.querySelectorAll("[data-service-panel]"));
+      if (!tabs.length || !panels.length) return;
+
+      const setActive = (name) => {
+        tabs.forEach((tab) => {
+          const active = tab.getAttribute("data-service-tab") === name;
+          tab.classList.toggle("is-active", active);
+          tab.setAttribute("aria-selected", active ? "true" : "false");
+        });
+
+        panels.forEach((panel) => {
+          const active = panel.getAttribute("data-service-panel") === name;
+          panel.hidden = !active;
+        });
+      };
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const name = tab.getAttribute("data-service-tab");
+          if (name) setActive(name);
+        });
+      });
+    })();
+  </script>
+</BaseLayout>

@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProductCard from "../components/ProductCard.astro";
+import SidebarPanel from "../components/SidebarPanel.astro";
+import { company, sidebarItems } from "../data/company";
+import { visibleProducts } from "../data/products";
+---
+
+<BaseLayout
+  title={`${company.name} | 제품목록`}
+  description="전체 제품 목록 안내"
+  path="/products"
+>
+  <section class="service-page">
+    <div class="container service-page__grid">
+      <SidebarPanel />
+
+      <div class="service-content">
+        <div class="product-shell">
+          <div class="product-shell__hero">
+            <div>
+              <p class="service-content__eyebrow">PRODUCT DIRECTORY</p>
+              <h1>제품군별로 빠르게 찾는 OA 제품 목록</h1>
+              <p class="product-shell__summary">
+                렌탈임대, 복합기구매, 프린터구매, 소모품으로 나눠 원하는 제품만 바로 확인할 수 있게 구성했습니다.
+              </p>
+            </div>
+            <div class="product-shell__meta">
+              <span>총 {visibleProducts.length}개 제품</span>
+              <a href="https://smartstore.naver.com/royaloa" target="_blank" rel="noreferrer">네이버 스토어 바로가기</a>
+            </div>
+          </div>
+
+          <div class="product-grid">
+            {visibleProducts.map((product) => <ProductCard product={product} />)}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

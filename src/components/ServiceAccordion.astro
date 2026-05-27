@@ -1,0 +1,25 @@
+---
+interface Item {
+  title: string;
+  body: string;
+}
+
+interface Props {
+  items: Item[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="service-accordion">
+  {
+    items.map((item, index) => (
+      <details class="service-accordion__item" open={index === 0}>
+        <summary>{item.title}</summary>
+        <div class="service-accordion__body">
+          <p>{item.body}</p>
+        </div>
+      </details>
+    ))
+  }
+</div>

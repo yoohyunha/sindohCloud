@@ -1,0 +1,78 @@
+---
+import type { Product } from "../types";
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+const gallery = product.gallery?.length ? product.gallery : [product.image];
+const hasGallery = gallery.length > 1;
+---
+
+<div class="hero-catalog__feature">
+  <div class="hero-catalog__feature-copy">
+    <p class="hero-catalog__label">FEATURED PRODUCT</p>
+    <h2>{product.name}</h2>
+    <p>{product.description}</p>
+    <p class="hero-catalog__feature-spec">{product.spec}</p>
+    <strong>{product.price}</strong>
+    <a class="text-link" href={product.storeUrl} target="_blank" rel="noreferrer">
+      스토어에서 보기
+    </a>
+  </div>
+
+  <div class="hero-carousel" data-hero-carousel>
+    {
+      gallery.map((image, index) => (
+        <img
+          class:list={["hero-carousel__image", index === 0 && "is-active"]}
+          src={image}
+          alt={`${product.name} 제품 이미지 ${index + 1}`}
+          width="640"
+          height="420"
+          loading={index === 0 ? "eager" : "lazy"}
+          data-hero-slide
+        />
+      ))
+    }
+    {
+      hasGallery && (
+        <div class="hero-carousel__dots" aria-label="대표 상품 이미지 선택">
+          {gallery.map((_, index) => <span class:list={["hero-carousel__dot", index === 0 && "is-active"]} data-hero-dot />)}
+        </div>
+      )
+    }
+  </div>
+</div>
+
+{
+  hasGallery && (
+    <script is:inline>
+      (() => {
+        const carousel = document.querySelector("[data-hero-carousel]");
+        if (!carousel) return;
+
+        const slides = Array.from(carousel.querySelectorAll("[data-hero-slide]"));
+        const dots = Array.from(carousel.querySelectorAll("[data-hero-dot]"));
+        if (slides.length < 2) return;
+
+        let index = 0;
+
+        const render = () => {
+          slides.forEach((slide, slideIndex) => {
+            slide.classList.toggle("is-active", slideIndex === index);
+          });
+          dots.forEach((dot, dotIndex) => {
+            dot.classList.toggle("is-active", dotIndex === index);
+          });
+        };
+
+        window.setInterval(() => {
+          index = (index + 1) % slides.length;
+          render();
+        }, 2800);
+      })();
+    </script>
+  )
+}

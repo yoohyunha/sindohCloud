@@ -1,0 +1,106 @@
+---
+import "../styles/global.css";
+import { company, navigation, supportInfo } from "../data/company";
+
+interface Props {
+  title: string;
+  description?: string;
+  path?: string;
+}
+
+const { title, description = company.summary, path = "/" } = Astro.props;
+const canonical = new URL(path, Astro.site);
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical.toString()} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical.toString()} />
+    <meta property="og:image" content={new URL("/og-default.svg", Astro.site).toString()} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" href="/favicon-rounded.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="topbar">
+          <div class="container topbar__inner">
+            <p>최고의 서비스로 고객 여러분께 만족감을 선사합니다.</p>
+            <a href={`tel:${company.phone.replaceAll("-", "")}`}>{company.phone}</a>
+          </div>
+        </div>
+        <div class="container site-header__inner">
+          <a class="site-logo" href="/">
+            <img src="/images/Logo.png" alt="신도클라우드 로고" width="237" height="80" />
+          </a>
+          <nav aria-label="주요 메뉴">
+            <ul class="site-nav">
+              {
+                navigation.map((item) => (
+                  <li>
+                    <a class={item.href === path ? "is-active" : undefined} href={item.href}>
+                      {item.label}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <slot />
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-links">
+          {
+            supportInfo.footerLinks.map((item) => (
+              <a href={item.href}>{item.label}</a>
+            ))
+          }
+        </div>
+        <div class="container site-footer__grid">
+          <div class="site-footer__brand">
+            <a class="site-footer__logo" href="/">
+              <img src="/images/Logo.png" alt="신도클라우드 로고" width="237" height="80" />
+            </a>
+          </div>
+          <div>
+            <p class="site-footer__title">상담문의</p>
+            <p>전화 {company.phone}</p>
+            <p>팩스 {supportInfo.fax}</p>
+            <p>주소 {company.address}</p>
+          </div>
+          <div>
+            <p class="site-footer__title">이용안내</p>
+            <p>상담시간: {company.hours}</p>
+            <p>휴일안내: {supportInfo.holidayNotice}</p>
+            <p>입금계좌: {supportInfo.bankName} {supportInfo.bankAccount}</p>
+            <p>예금주명: {supportInfo.accountHolder}</p>
+          </div>
+          <div>
+            <p class="site-footer__title">회사정보</p>
+            <p>회사명 {company.name}</p>
+            <p>{company.businessInfo}</p>
+            <p>전화 {company.phone}</p>
+            <p>팩스 {supportInfo.fax}</p>
+          </div>
+        </div>
+        <div class="container footer-copy">
+          <p>주소 {company.address} Copyright©2020 {company.name}. All Rights Reserved.</p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
