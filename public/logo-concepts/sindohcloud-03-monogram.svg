@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 80" role="img" aria-labelledby="title desc">
+  <title id="title">SINDOHCLOUD monogram logo</title>
+  <desc id="desc">Rounded SC monogram and SINDOHCLOUD wordmark.</desc>
+  <g fill="none" fill-rule="evenodd">
+    <rect x="7" y="9" width="62" height="62" rx="19" fill="#172033"/>
+    <path d="M44.5 24.5c-2.6-2.4-6.2-3.7-10.4-3.7-7.4 0-12.6 3.7-12.6 9 0 5 3.6 7.5 11.8 9.2 7.1 1.5 9.2 2.8 9.2 5.7 0 3.3-3.3 5.5-8.2 5.5-4.7 0-8.8-1.6-12.1-4.7" stroke="#FFF" stroke-width="5" stroke-linecap="round"/>
+    <path d="M56.5 25.5a14 14 0 1 0 0 29" stroke="#3B82F6" stroke-width="5" stroke-linecap="round"/>
+    <text x="92" y="50" fill="#172033" font-family="Inter, Pretendard, Arial, sans-serif" font-size="31" font-weight="800" letter-spacing=".3">SINDOH<tspan fill="#2563EB">CLOUD</tspan></text>
+  </g>
+</svg>

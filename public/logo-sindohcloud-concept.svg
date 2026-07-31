@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 72" role="img" aria-labelledby="logo-title logo-description">
+  <title id="logo-title">SINDOHCLOUD</title>
+  <desc id="logo-description">A blue cloud symbol followed by the SINDOHCLOUD wordmark.</desc>
+  <g fill="none" fill-rule="evenodd">
+    <g transform="translate(4 12)">
+      <path d="M14.5 42C6.5 42 0 35.6 0 27.7c0-7.2 5.4-13.2 12.5-14.2C15.5 5.5 23.2 0 32.1 0c11.4 0 20.8 8.8 21.7 20 7.2.8 12.7 6.8 12.7 14 0 7.8-6.4 14-14.3 14H14.5Z" fill="#2563EB"/>
+      <path d="M15.5 24.5h35.2M24 15.5l-9 9 9 9M42 15.5l9 9-9 9" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <text x="86" y="45" fill="#172033" font-family="Inter, Pretendard, Arial, sans-serif" font-size="29" font-weight="800" letter-spacing="0.4">SINDOH<tspan fill="#2563EB">CLOUD</tspan></text>
+  </g>
+</svg>

@@ -21,7 +21,7 @@ const canonical = new URL(path, Astro.site);
       <header class="site-header">
         <div class="topbar"><div class="container topbar__inner"><p>신도클라우드 복합기 렌탈·판매·유지보수 전문</p><a href={`tel:${company.phone.replaceAll("-", "")}`}>{company.phone}</a></div></div>
         <div class="container site-header__inner">
-          <a class="site-logo" href="/"><img src="/images/sindoh-official-logo.png" alt="신도리코 로고" width="210" height="44" /></a>
+          <a class="site-logo" href="/"><img src="/logo-concepts/sindohcloud-circle-wordmark.svg" alt="sindohcloud 신도클라우드" width="236" height="55" /></a>
           <nav aria-label="주요 메뉴"><ul class="site-nav">{navigation.map((item) => <li><a class={item.href === path ? "is-active" : undefined} href={item.href}>{item.label}</a></li>)}</ul></nav>
         </div>
       </header>
@@ -29,7 +29,7 @@ const canonical = new URL(path, Astro.site);
       <footer class="site-footer">
         <div class="container footer-links">{supportInfo.footerLinks.map((item) => <a href={item.href}>{item.label}</a>)}</div>
         <div class="container site-footer__grid">
-          <div class="site-footer__brand"><img src="/images/sindoh-official-logo.png" alt="신도리코" width="180" /></div>
+          <div class="site-footer__brand"><img src="/logo-concepts/sindohcloud-circle-wordmark.svg" alt="sindohcloud 신도클라우드" width="220" height="51" /></div>
           <div>
             <p class="site-footer__title">상담문의</p>
             <p>전화 {company.phone}</p>

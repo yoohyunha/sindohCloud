@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 70" role="img" aria-labelledby="title desc">
+  <title id="title">sindohcloud</title>
+  <desc id="desc">The original Sindoh favicon followed by a black sindohcloud wordmark.</desc>
+  <image
+    href="data:image/png;base64,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"
+    x="0"
+    y="6"
+    width="48"
+    height="48"
+  />
+  <text
+    x="58"
+    y="39"
+    fill="#111111"
+    font-family="Inter, Pretendard, Arial, sans-serif"
+    font-size="38"
+    font-weight="700"
+    letter-spacing="-1.7"
+  >sindohcloud</text>
+  <text
+    x="60"
+    y="57"
+    fill="#667085"
+    font-family="Pretendard, 'Noto Sans KR', Arial, sans-serif"
+    font-size="12"
+    font-weight="500"
+    letter-spacing="2.4"
+  >신도클라우드</text>
+</svg>
