@@ -34,7 +34,7 @@ export const navigation: NavItem[] = [
 ];
 
 export const supportInfo = {
-  fax: "02-827-0054",
+  fax: "02-827-0524",
   mobile: "010-6261-2118",
   holidayNotice: "토·일요일 및 공휴일 휴무",
   bankName: "국민은행",
