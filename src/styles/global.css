@@ -1586,6 +1586,8 @@ main {
   }
 
   .site-header {
+    position: relative;
+    top: auto;
     backdrop-filter: none;
     background: #ffffff;
   }
@@ -1711,21 +1713,20 @@ main {
   }
 
   .hero-catalog__menu {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.5rem;
-    overflow-x: auto;
-    padding-bottom: 0.25rem;
-    scroll-snap-type: x proximity;
-    scrollbar-width: thin;
+    overflow: visible;
+    padding-bottom: 0;
   }
 
   .hero-catalog__menu li {
-    flex: 0 0 auto;
-    scroll-snap-align: start;
+    min-width: 0;
   }
 
   .hero-catalog__menu-link {
-    min-width: 10rem;
+    min-width: 0;
+    height: 100%;
     padding: 0.8rem 0.9rem;
   }
 
@@ -1750,6 +1751,12 @@ main {
   .hero-carousel__image {
     min-height: 220px;
     height: 220px;
+  }
+
+  .hero-carousel__dots {
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 12rem;
   }
 
   .product-detail__hero {
