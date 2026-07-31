@@ -13,7 +13,12 @@ export type Product = {
   description: string;
   image: string;
   gallery?: string[];
+  detailImages?: string[];
+  detailNotices?: string[];
   storeUrl: string;
+  officialUrl?: string;
+  features?: string[];
+  details?: Array<{ label: string; value: string }>;
   featured?: boolean;
   visible: boolean;
 };

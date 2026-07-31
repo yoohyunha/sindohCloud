@@ -1,67 +1,17 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import SectionHeading from "../components/SectionHeading.astro";
 import ContactPanel from "../components/ContactPanel.astro";
 import { company } from "../data/company";
 ---
-
-<BaseLayout
-  title={`${company.name} | 회사소개`}
-  description="신도클라우드"
-  path="/company"
->
-  <section class="page-hero">
-    <div class="container page-hero__inner">
-      <p class="page-hero__eyebrow">COMPANY</p>
-      <h1>신도 클라우드</h1>
-      <p>{company.description}</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container two-column">
-      <div>
-        <SectionHeading
-          eyebrow="About"
-          title="고객이 먼저 확인해야 하는 정보만 남깁니다."
-          description="첫 상담 전에 궁금해하는 취급 품목, 대응 방식, 운영 시간을 짧고 분명하게 보여주는 구조입니다."
-        />
-      </div>
-      <div class="stack-list">
-        <article class="detail-card">
-          <h2>취급 품목</h2>
-          <p>복합기, 프린터, 스캐너, 소모품, 사무실 운영에 필요한 OA 제품군을 안내합니다.</p>
-        </article>
-        <article class="detail-card">
-          <h2>상담 방식</h2>
-          <p>전화 또는 이메일로 간단히 문의를 남기면 제품 추천과 가격 상담을 연결하는 구조를 기본으로 둡니다.</p>
-        </article>
-        <article class="detail-card">
-          <h2>운영 시간</h2>
-          <p>{company.hours}</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--soft">
-    <div class="container info-ribbon">
-      <div>
-        <p class="info-ribbon__label">Address</p>
-        <strong>{company.address}</strong>
-      </div>
-      <div>
-        <p class="info-ribbon__label">Phone</p>
-        <strong>{company.phone}</strong>
-      </div>
-      <div>
-        <p class="info-ribbon__label">Business</p>
-        <strong>{company.businessInfo}</strong>
-      </div>
-    </div>
-  </section>
-
-  <div class="container section">
-    <ContactPanel />
-  </div>
+<BaseLayout title={`${company.name} | 회사소개`} description={company.description} path="/company">
+  <section class="page-hero"><div class="container page-hero__inner"><p class="page-hero__eyebrow">COMPANY</p><h1>신도클라우드</h1><p>{company.description}</p></div></section>
+  <section class="section"><div class="container">
+    <div class="feature-grid">{company.categories.map((item) => <article class="feature-card"><h3>{item.name}</h3><p>{item.description}</p></article>)}</div>
+  </div></section>
+  <section class="section section--soft"><div class="container info-ribbon">
+    <div><p class="info-ribbon__label">Address</p><strong>{company.address}</strong></div>
+    <div><p class="info-ribbon__label">Phone</p><strong>{company.phone}</strong></div>
+    <div><p class="info-ribbon__label">Business</p><strong>{company.businessInfo}</strong></div>
+  </div></section>
+  <div class="container section"><ContactPanel /></div>
 </BaseLayout>

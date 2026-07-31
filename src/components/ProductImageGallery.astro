@@ -1,0 +1,69 @@
+---
+interface Props {
+  images: string[];
+  productName: string;
+}
+
+const { images, productName } = Astro.props;
+---
+
+<div class="product-detail__media product-gallery" data-product-gallery>
+  <div class="product-gallery__viewport">
+    {images.map((image, index) => (
+      <img
+        class:list={["product-gallery__image", { "is-active": index === 0 }]}
+        src={image}
+        alt={`${productName} 제품 이미지 ${index + 1}`}
+        loading={index === 0 ? "eager" : "lazy"}
+        aria-hidden={index === 0 ? "false" : "true"}
+        data-gallery-image
+      />
+    ))}
+  </div>
+
+  {images.length > 1 && (
+    <>
+      <button class="product-gallery__arrow product-gallery__arrow--prev" type="button" aria-label="이전 이미지" data-gallery-prev>←</button>
+      <button class="product-gallery__arrow product-gallery__arrow--next" type="button" aria-label="다음 이미지" data-gallery-next>→</button>
+      <div class="product-gallery__dots" aria-label="제품 이미지 선택">
+        {images.map((_, index) => (
+          <button
+            class:list={["product-gallery__dot", { "is-active": index === 0 }]}
+            type="button"
+            aria-label={`${index + 1}번 이미지 보기`}
+            aria-current={index === 0 ? "true" : "false"}
+            data-gallery-dot
+          />
+        ))}
+      </div>
+    </>
+  )}
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-product-gallery]").forEach((gallery) => {
+    const images = Array.from(gallery.querySelectorAll<HTMLElement>("[data-gallery-image]"));
+    const dots = Array.from(gallery.querySelectorAll<HTMLButtonElement>("[data-gallery-dot]"));
+    const previous = gallery.querySelector<HTMLButtonElement>("[data-gallery-prev]");
+    const next = gallery.querySelector<HTMLButtonElement>("[data-gallery-next]");
+    let activeIndex = 0;
+
+    const showImage = (index: number) => {
+      activeIndex = (index + images.length) % images.length;
+      images.forEach((image, imageIndex) => {
+        const isActive = imageIndex === activeIndex;
+        image.classList.toggle("is-active", isActive);
+        image.setAttribute("aria-hidden", String(!isActive));
+      });
+      dots.forEach((dot, dotIndex) => {
+        const isActive = dotIndex === activeIndex;
+        dot.classList.toggle("is-active", isActive);
+        dot.setAttribute("aria-current", String(isActive));
+      });
+    };
+
+    previous?.addEventListener("click", () => showImage(activeIndex - 1));
+    next?.addEventListener("click", () => showImage(activeIndex + 1));
+    dots.forEach((dot, index) => dot.addEventListener("click", () => showImage(index)));
+  });
+</script>

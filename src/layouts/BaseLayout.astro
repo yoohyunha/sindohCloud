@@ -1,17 +1,10 @@
 ---
 import "../styles/global.css";
 import { company, navigation, supportInfo } from "../data/company";
-
-interface Props {
-  title: string;
-  description?: string;
-  path?: string;
-}
-
+interface Props { title: string; description?: string; path?: string; }
 const { title, description = company.summary, path = "/" } = Astro.props;
 const canonical = new URL(path, Astro.site);
 ---
-
 <!doctype html>
 <html lang="ko">
   <head>
@@ -20,66 +13,28 @@ const canonical = new URL(path, Astro.site);
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical.toString()} />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical.toString()} />
-    <meta property="og:image" content={new URL("/og-default.svg", Astro.site).toString()} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="theme-color" content="#ffffff" />
-    <link rel="icon" href="/favicon-rounded.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" /><meta property="og:title" content={title} /><meta property="og:description" content={description} />
+    <meta name="theme-color" content="#ffffff" /><link rel="icon" href="/favicon-sindoh.png" type="image/png" />
   </head>
   <body>
     <div class="page-shell">
       <header class="site-header">
-        <div class="topbar">
-          <div class="container topbar__inner">
-            <p>최고의 서비스로 고객 여러분께 만족감을 선사합니다.</p>
-            <a href={`tel:${company.phone.replaceAll("-", "")}`}>{company.phone}</a>
-          </div>
-        </div>
+        <div class="topbar"><div class="container topbar__inner"><p>신도클라우드 복합기 렌탈·판매·유지보수 전문</p><a href={`tel:${company.phone.replaceAll("-", "")}`}>{company.phone}</a></div></div>
         <div class="container site-header__inner">
-          <a class="site-logo" href="/">
-            <img src="/images/Logo.png" alt="신도클라우드 로고" width="237" height="80" />
-          </a>
-          <nav aria-label="주요 메뉴">
-            <ul class="site-nav">
-              {
-                navigation.map((item) => (
-                  <li>
-                    <a class={item.href === path ? "is-active" : undefined} href={item.href}>
-                      {item.label}
-                    </a>
-                  </li>
-                ))
-              }
-            </ul>
-          </nav>
+          <a class="site-logo" href="/"><img src="/images/sindoh-official-logo.png" alt="신도리코 로고" width="210" height="44" /></a>
+          <nav aria-label="주요 메뉴"><ul class="site-nav">{navigation.map((item) => <li><a class={item.href === path ? "is-active" : undefined} href={item.href}>{item.label}</a></li>)}</ul></nav>
         </div>
       </header>
-
-      <main>
-        <slot />
-      </main>
-
+      <main><slot /></main>
       <footer class="site-footer">
-        <div class="container footer-links">
-          {
-            supportInfo.footerLinks.map((item) => (
-              <a href={item.href}>{item.label}</a>
-            ))
-          }
-        </div>
+        <div class="container footer-links">{supportInfo.footerLinks.map((item) => <a href={item.href}>{item.label}</a>)}</div>
         <div class="container site-footer__grid">
-          <div class="site-footer__brand">
-            <a class="site-footer__logo" href="/">
-              <img src="/images/Logo.png" alt="신도클라우드 로고" width="237" height="80" />
-            </a>
-          </div>
+          <div class="site-footer__brand"><img src="/images/sindoh-official-logo.png" alt="신도리코" width="180" /></div>
           <div>
             <p class="site-footer__title">상담문의</p>
             <p>전화 {company.phone}</p>
             <p>팩스 {supportInfo.fax}</p>
+            <p>이메일 {company.email}</p>
             <p>주소 {company.address}</p>
           </div>
           <div>
@@ -97,9 +52,7 @@ const canonical = new URL(path, Astro.site);
             <p>팩스 {supportInfo.fax}</p>
           </div>
         </div>
-        <div class="container footer-copy">
-          <p>주소 {company.address} Copyright©2020 {company.name}. All Rights Reserved.</p>
-        </div>
+        <div class="container footer-copy"><p>주소 {company.address} Copyright © 2020 {company.name}. All Rights Reserved.</p></div>
       </footer>
     </div>
   </body>

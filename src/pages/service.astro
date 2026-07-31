@@ -1,98 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import SidebarPanel from "../components/SidebarPanel.astro";
+import ContactPanel from "../components/ContactPanel.astro";
 import { company } from "../data/company";
-import { maintenanceServiceItems, rentalServiceItems } from "../data/service";
-import ServiceAccordion from "../components/ServiceAccordion.astro";
+const services = [
+  { title: "맞춤 렌탈", body: "초기 구매 부담을 줄이고 사용량과 설치 환경에 알맞은 복합기를 구성합니다." },
+  { title: "정기 점검", body: "기기 상태와 소모품을 주기적으로 확인해 안정적인 업무 환경을 유지합니다." },
+  { title: "소모품 관리", body: "토너와 주요 소모품의 교체 시기를 관리해 갑작스러운 출력 중단을 줄입니다." },
+  { title: "장애 대응", body: "문제 발생 시 빠르게 상태를 확인하고 업무 공백을 줄이는 방향으로 대응합니다." }
+];
 ---
-
-<BaseLayout
-  title={`${company.name} | 임대·유지보수안내`}
-  description="임대(렌탈) 서비스와 유지보수 서비스 안내"
-  path="/service"
->
-  <section class="service-page">
-    <div class="container service-page__grid">
-      <SidebarPanel activeKey="rental" />
-
-      <div class="service-content">
-        <div class="service-content__header">
-          <div>
-            <p class="service-content__eyebrow">SERVICE GUIDE</p>
-            <h1>임대·유지보수안내</h1>
-          </div>
-          <p class="service-content__crumb">HOME &gt; 임대·유지보수안내</p>
-        </div>
-
-        <div class="service-tabs" role="tablist" aria-label="서비스 탭">
-          <button class="service-tab is-active" type="button" data-service-tab="rental" role="tab" aria-selected="true">
-            임대(렌탈)서비스
-          </button>
-          <button class="service-tab" type="button" data-service-tab="maintenance" role="tab" aria-selected="false">
-            유지보수 서비스
-          </button>
-        </div>
-
-        <section class="service-panel is-active" data-service-panel="rental">
-          <div class="service-section__heading">
-            <div>
-              <p class="service-section__eyebrow">Rental Service</p>
-              <h2>임대(렌탈)서비스</h2>
-            </div>
-            <div class="service-visual service-visual--rental">
-              <div>
-                <span>Initial Cost Down</span>
-                <strong>초기 부담을 낮추고 관리까지 연결</strong>
-              </div>
-            </div>
-          </div>
-          <ServiceAccordion items={rentalServiceItems} />
-        </section>
-
-        <section class="service-panel" data-service-panel="maintenance" hidden>
-          <div class="service-section__heading">
-            <div>
-              <p class="service-section__eyebrow">Maintenance</p>
-              <h2>유지보수 서비스</h2>
-            </div>
-            <div class="service-visual service-visual--maintenance">
-              <div>
-                <span>Preventive Care</span>
-                <strong>정기점검과 빠른 대응으로 안정적인 운영</strong>
-              </div>
-            </div>
-          </div>
-          <ServiceAccordion items={maintenanceServiceItems} />
-        </section>
-      </div>
-    </div>
-  </section>
-
-  <script is:inline>
-    (() => {
-      const tabs = Array.from(document.querySelectorAll("[data-service-tab]"));
-      const panels = Array.from(document.querySelectorAll("[data-service-panel]"));
-      if (!tabs.length || !panels.length) return;
-
-      const setActive = (name) => {
-        tabs.forEach((tab) => {
-          const active = tab.getAttribute("data-service-tab") === name;
-          tab.classList.toggle("is-active", active);
-          tab.setAttribute("aria-selected", active ? "true" : "false");
-        });
-
-        panels.forEach((panel) => {
-          const active = panel.getAttribute("data-service-panel") === name;
-          panel.hidden = !active;
-        });
-      };
-
-      tabs.forEach((tab) => {
-        tab.addEventListener("click", () => {
-          const name = tab.getAttribute("data-service-tab");
-          if (name) setActive(name);
-        });
-      });
-    })();
-  </script>
+<BaseLayout title={`${company.name} | 렌탈·유지보수`} description="신도리코 복합기 렌탈과 유지보수 안내" path="/service">
+  <section class="page-hero"><div class="container page-hero__inner"><p class="page-hero__eyebrow">SERVICE</p><h1>복합기는 편하게 사용하고,<br />관리는 신도클라우드에 맡기세요.</h1><p>설치부터 정기 점검, 소모품 관리와 장애 대응까지 업무 흐름이 끊기지 않도록 돕습니다.</p></div></section>
+  <section class="section"><div class="container feature-grid">{services.map((service) => <article class="feature-card"><h3>{service.title}</h3><p>{service.body}</p></article>)}</div></section>
+  <div class="container section"><ContactPanel /></div>
 </BaseLayout>
