@@ -39,12 +39,7 @@ export const supportInfo = {
   holidayNotice: "토·일요일 및 공휴일 휴무",
   bankName: "국민은행",
   bankAccount: "485501-01-077492",
-  accountHolder: "이정수(신도클라우드)",
-  footerLinks: [
-    { label: "온라인문의", href: "/contact" },
-    { label: "공지사항", href: "/" },
-    { label: "개인정보처리방침", href: "/" }
-  ]
+  accountHolder: "이정수(신도클라우드)"
 };
 
 export const sidebarItems = [

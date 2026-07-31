@@ -4,12 +4,22 @@ export const products: Product[] = [
   {
     id: "sindoh-d470", name: "신도 A3 컬러복합기 D470", category: "A3 컬러 복합기", listingGroup: "rental", price: "렌탈·구매 상담",
     spec: "컬러/흑백 25 ppm · 스캔 80 ipm · 1,200 dpi · 10.1″ 컬러 패널",
-    description: "신도리코가 직접 추천하는 시그니처 복합기입니다. 강력한 성능과 다양한 편의 기능으로 스마트한 오피스 환경을 구성할 수 있습니다.",
+    description: "시그니처 복합기, 강력한 성능과 다양한 편의 기능으로 스마트한 오피스 환경을 구성할 수 있습니다.",
     image: "/images/D470-official.png",
     gallery: [
       "/images/d470-gallery/d470-1.png",
       "/images/d470-gallery/d470-2.png",
       "/images/d470-gallery/d470-3.png"
+    ],
+    detailImages: [
+      "/images/d470-catalog/d470-catalog-1.jpg",
+      "/images/d470-catalog/d470-catalog-2.jpg",
+      "/images/d470-catalog/d470-catalog-3.jpg",
+      "/images/d470-catalog/d470-catalog-4.jpg",
+      "/images/d470-catalog/d470-catalog-5.jpg",
+      "/images/d470-catalog/d470-catalog-6.jpg",
+      "/images/d470-catalog/d470-catalog-7.jpg",
+      "/images/d470-catalog/d470-catalog-8.jpg"
     ],
     storeUrl: "https://smartstore.naver.com/royaloa",
     officialUrl: "https://www.sindoh.com/support/download/d470",
@@ -29,6 +39,16 @@ export const products: Product[] = [
       "/images/d450-official/d450-1.png",
       "/images/d450-official/d450-panel-angle.jpg",
       "/images/d450-official/d450-panel-screen.jpg"
+    ],
+    detailImages: [
+      "/images/d450-catalog/d450-catalog-1.jpg",
+      "/images/d450-catalog/d450-catalog-2.jpg",
+      "/images/d450-catalog/d450-catalog-3.jpg",
+      "/images/d450-catalog/d450-catalog-4.jpg",
+      "/images/d450-catalog/d450-catalog-5.jpg",
+      "/images/d450-catalog/d450-catalog-6.jpg",
+      "/images/d450-catalog/d450-catalog-7.jpg",
+      "/images/d450-catalog/d450-catalog-8.jpg"
     ],
     storeUrl: "https://smartstore.naver.com/royaloa",
     officialUrl: "https://www.sindoh.com/support/download/d450",
@@ -50,8 +70,12 @@ export const products: Product[] = [
       "/images/d320-gallery/d320-3.png"
     ],
     detailImages: [
-      "/images/d320-smartstore/d320-front.jpg",
-      "/images/d320-smartstore/d320-angle.jpg"
+      "/images/d320-catalog/d320-catalog-1.jpg",
+      "/images/d320-catalog/d320-catalog-2.jpg",
+      "/images/d320-catalog/d320-catalog-3.jpg",
+      "/images/d320-catalog/d320-catalog-4.jpg",
+      "/images/d320-catalog/d320-catalog-5.jpg",
+      "/images/d320-catalog/d320-catalog-6.jpg"
     ],
     detailNotices: [
       "※ 문의 전화 필수입니다 ※",

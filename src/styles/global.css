@@ -889,7 +889,9 @@ main {
 }
 
 .site-footer {
-  padding: 2rem 0 3rem;
+  padding: 3rem 0 1.5rem;
+  border-top: 1px solid rgba(23, 26, 33, 0.1);
+  background: #f7f8fa;
 }
 
 .service-page {
@@ -1138,38 +1140,78 @@ main {
 }
 
 .site-footer__grid {
-  grid-template-columns: 260px 1.3fr 1fr 1fr;
-  padding: 1.8rem 2rem;
+  grid-template-columns: minmax(220px, 0.85fr) minmax(380px, 1.5fr) minmax(220px, 0.75fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  padding: 0 0 2.5rem;
 }
 
 .site-footer__brand {
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  align-content: start;
+  gap: 1rem;
 }
 
-.site-footer__logo {
-  display: inline-flex;
-}
-
-.site-footer__logo img {
-  width: 180px;
+.site-footer__brand img {
+  width: 220px;
   height: auto;
 }
 
+.site-footer__brand p {
+  max-width: 23rem;
+  margin: 0;
+  line-height: 1.75;
+}
+
 .site-footer__title {
-  margin: 0 0 0.65rem;
-  color: var(--accent-strong);
+  margin: 0 0 1rem;
+  color: var(--text);
   font-weight: 800;
 }
 
+.site-footer__company,
+.site-footer__contact {
+  min-width: 0;
+}
+
+.site-footer__company p:not(.site-footer__title) {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr);
+  gap: 1rem;
+  margin: 0.45rem 0;
+}
+
+.site-footer__company span {
+  color: #858d99;
+}
+
+.site-footer__contact p {
+  margin: 0.28rem 0;
+}
+
+.site-footer__contact a {
+  display: inline-block;
+  color: var(--text);
+}
+
+.site-footer__phone {
+  margin-bottom: 0.45rem;
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
 .footer-copy {
-  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 0 0;
+  border-top: 1px solid rgba(23, 26, 33, 0.1);
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.86rem;
 }
 
 .footer-copy p {
-  margin: 0.35rem 0;
+  margin: 0;
 }
 
 .not-found__inner {
@@ -1310,9 +1352,12 @@ main {
 
 .product-detail__summary h1 {
   margin: 0;
-  font-size: clamp(2.2rem, 3.8vw, 3.75rem);
-  line-height: 1;
-  letter-spacing: -0.05em;
+  font-size: clamp(2.2rem, 3vw, 3rem);
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  text-wrap: balance;
 }
 
 .product-detail__summary .service-content__eyebrow {
@@ -1417,7 +1462,7 @@ main {
 
 .product-detail__store-images {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 1rem;
   max-width: 1000px;
   margin: 0 auto;
@@ -1847,7 +1892,7 @@ main {
   }
 
   .site-footer {
-    padding-top: 1rem;
+    padding: 2rem 0 1.25rem;
   }
 
   .footer-links {
@@ -1857,15 +1902,23 @@ main {
   }
 
   .site-footer__grid {
-    gap: 1.4rem;
+    gap: 2rem;
+    padding-bottom: 2rem;
   }
 
   .site-footer__brand img {
-    width: 170px;
+    width: 190px;
+  }
+
+  .site-footer__company p:not(.site-footer__title) {
+    grid-template-columns: 1fr;
+    gap: 0.1rem;
+    margin: 0.8rem 0;
   }
 
   .footer-copy {
-    padding: 0 1.4rem;
+    display: grid;
+    padding-top: 1rem;
   }
 }
 

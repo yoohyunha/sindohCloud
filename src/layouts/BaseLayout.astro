@@ -31,32 +31,29 @@ const canonical = new URL(path, Astro.site);
       </header>
       <main><slot /></main>
       <footer class="site-footer">
-        <div class="container footer-links">{supportInfo.footerLinks.map((item) => <a href={item.href}>{item.label}</a>)}</div>
         <div class="container site-footer__grid">
-          <div class="site-footer__brand"><img src="/logo-concepts/sindohcloud-circle-wordmark.svg" alt="sindohcloud 신도클라우드" width="220" height="51" /></div>
-          <div>
-            <p class="site-footer__title">상담문의</p>
-            <p>전화 {company.phone}</p>
-            <p>팩스 {supportInfo.fax}</p>
-            <p>이메일 {company.email}</p>
-            <p>주소 {company.address}</p>
+          <div class="site-footer__brand">
+            <img src="/logo-concepts/sindohcloud-circle-wordmark.svg" alt="sindohcloud 신도클라우드" width="220" height="51" />
+            <p>{company.tagline}</p>
           </div>
-          <div>
-            <p class="site-footer__title">이용안내</p>
-            <p>상담시간: {company.hours}</p>
-            <p>휴일안내: {supportInfo.holidayNotice}</p>
-            <p>입금계좌: {supportInfo.bankName} {supportInfo.bankAccount}</p>
-            <p>예금주명: {supportInfo.accountHolder}</p>
-          </div>
-          <div>
+          <div class="site-footer__company">
             <p class="site-footer__title">회사정보</p>
-            <p>회사명 {company.name}</p>
-            <p>{company.businessInfo}</p>
-            <p>전화 {company.phone}</p>
-            <p>팩스 {supportInfo.fax}</p>
+            <p><span>회사명</span>{company.name}</p>
+            <p><span>대표·사업자번호</span>{company.businessInfo.replace("사업자등록번호 ", "").replace(" / 대표 ", " · ")}</p>
+            <p><span>주소</span>{company.address}</p>
+          </div>
+          <div class="site-footer__contact">
+            <p class="site-footer__title">고객센터</p>
+            <a class="site-footer__phone" href={`tel:${company.phone.replaceAll("-", "")}`}>{company.phone}</a>
+            <p>{company.hours}</p>
+            <p>{supportInfo.holidayNotice}</p>
+            <a href={`mailto:${company.email}`}>{company.email}</a>
           </div>
         </div>
-        <div class="container footer-copy"><p>주소 {company.address} Copyright © 2020 {company.name}. All Rights Reserved.</p></div>
+        <div class="container footer-copy">
+          <p>© {new Date().getFullYear()} {company.name}. All Rights Reserved.</p>
+          <p>기업용 복합기 렌탈·판매·유지보수 전문</p>
+        </div>
       </footer>
     </div>
     <script>
