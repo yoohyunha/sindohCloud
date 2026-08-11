@@ -115,14 +115,6 @@ export const products: Product[] = [
     details: [{ label: "브랜드", value: "교세라" }, { label: "제품군", value: "TASKalfa" }, { label: "구분", value: "컬러복합기" }], visible: true
   },
   {
-    id: "kyocera-taskalfa-5054cig", name: "교세라 TASKalfa 5054ciG", category: "A3 컬러복합기", listingGroup: "kyocera-color", price: "렌탈·구매 상담",
-    spec: "교세라 TASKalfa 컬러복합기 · 흑백/컬러 50 ppm",
-    description: "고속 컬러 출력과 복사, 스캔 업무를 지원하는 교세라 A3 컬러복합기입니다.",
-    image: "/images/product-prime-c350.svg", storeUrl: "https://smartstore.naver.com/royaloa",
-    features: ["A3 컬러복합기", "흑백·컬러 50 ppm", "출력·복사·스캔 및 옵션 팩스"],
-    details: [{ label: "브랜드", value: "교세라" }, { label: "제품군", value: "TASKalfa" }, { label: "구분", value: "컬러복합기" }], visible: true
-  },
-  {
     id: "kyocera-taskalfa-mz4000i", name: "교세라 TASKalfa MZ4000i", category: "A3 흑백복합기", listingGroup: "kyocera-mono", price: "렌탈·구매 상담",
     spec: "교세라 A3 흑백복합기",
     description: "흑백 문서 중심의 사무 환경을 위한 교세라 A3 흑백복합기입니다.",
