@@ -7,7 +7,7 @@ export type Product = {
   id: string;
   name: string;
   category: string;
-  listingGroup: "rental" | "multifunction" | "printer" | "supplies" | "scanner";
+  listingGroup: "rental" | "multifunction" | "printer" | "supplies" | "scanner" | "shredder" | "kyocera-mono" | "kyocera-color";
   price: string;
   spec: string;
   description: string;

@@ -60,7 +60,7 @@ export const products: Product[] = [
     ], featured: true, visible: true
   },
   {
-    id: "sindoh-d320-rental", name: "신도 컬러복합기 D320 3년렌탈", category: "A3 컬러 복합기", listingGroup: "rental", price: "월 80,000원",
+    id: "sindoh-d320-rental", name: "신도 A3 컬러복합기 D320", category: "A3 컬러 복합기", listingGroup: "rental", price: "렌탈·구매 상담",
     spec: "컬러/흑백 22 ppm · 스캔 55 ipm · 6GB · 256GB SSD",
     description: "출력·복사·스캔·팩스·USB 기능을 하나로 구성한 실속형 모델입니다. 9인치 컬러 화면과 넉넉한 기본 급지량을 갖췄습니다.",
     image: "/images/D320-official.png",
@@ -89,6 +89,70 @@ export const products: Product[] = [
       { label: "해상도", value: "최대 1,800 × 600 dpi" }, { label: "메모리 / 저장장치", value: "6 GB / 256 GB SSD" },
       { label: "급지량", value: "기본 1,000매 + 다용도 100매" }, { label: "디스플레이", value: "9인치 컬러 LCD" }
     ], featured: true, visible: true
+  },
+  {
+    id: "kyocera-taskalfa-3554cig", name: "교세라 TASKalfa 3554ciG", category: "A3 컬러복합기", listingGroup: "kyocera-color", price: "렌탈·구매 상담",
+    spec: "교세라 TASKalfa 컬러복합기",
+    description: "사무실의 컬러 문서 출력과 복사, 스캔 업무를 한 대로 처리하는 교세라 A3 컬러복합기입니다.",
+    image: "/images/product-prime-c350.svg", storeUrl: "https://smartstore.naver.com/royaloa",
+    features: ["A3 컬러복합기", "출력·복사·스캔 지원", "설치 환경에 맞춘 렌탈·구매 상담"],
+    details: [{ label: "브랜드", value: "교세라" }, { label: "제품군", value: "TASKalfa" }, { label: "구분", value: "컬러복합기" }], visible: true
+  },
+  {
+    id: "kyocera-taskalfa-2554cig", name: "교세라 TASKalfa 2554ciG", category: "A3 컬러복합기", listingGroup: "kyocera-color", price: "렌탈·구매 상담",
+    spec: "교세라 TASKalfa 컬러복합기",
+    description: "다양한 사무 문서를 안정적으로 처리할 수 있도록 구성된 교세라 A3 컬러복합기입니다.",
+    image: "/images/product-prime-c350.svg", storeUrl: "https://smartstore.naver.com/royaloa",
+    features: ["A3 컬러복합기", "출력·복사·스캔 지원", "설치 환경에 맞춘 렌탈·구매 상담"],
+    details: [{ label: "브랜드", value: "교세라" }, { label: "제품군", value: "TASKalfa" }, { label: "구분", value: "컬러복합기" }], visible: true
+  },
+  {
+    id: "kyocera-taskalfa-4054cig", name: "교세라 TASKalfa 4054ciG", category: "A3 컬러복합기", listingGroup: "kyocera-color", price: "렌탈·구매 상담",
+    spec: "교세라 TASKalfa 컬러복합기",
+    description: "출력량이 많은 업무 환경에도 대응할 수 있는 교세라 TASKalfa 컬러복합기입니다.",
+    image: "/images/product-prime-c350.svg", storeUrl: "https://smartstore.naver.com/royaloa",
+    features: ["A3 컬러복합기", "출력·복사·스캔 지원", "설치 환경에 맞춘 렌탈·구매 상담"],
+    details: [{ label: "브랜드", value: "교세라" }, { label: "제품군", value: "TASKalfa" }, { label: "구분", value: "컬러복합기" }], visible: true
+  },
+  {
+    id: "kyocera-taskalfa-5054cig", name: "교세라 TASKalfa 5054ciG", category: "A3 컬러복합기", listingGroup: "kyocera-color", price: "렌탈·구매 상담",
+    spec: "교세라 TASKalfa 컬러복합기 · 흑백/컬러 50 ppm",
+    description: "고속 컬러 출력과 복사, 스캔 업무를 지원하는 교세라 A3 컬러복합기입니다.",
+    image: "/images/product-prime-c350.svg", storeUrl: "https://smartstore.naver.com/royaloa",
+    features: ["A3 컬러복합기", "흑백·컬러 50 ppm", "출력·복사·스캔 및 옵션 팩스"],
+    details: [{ label: "브랜드", value: "교세라" }, { label: "제품군", value: "TASKalfa" }, { label: "구분", value: "컬러복합기" }], visible: true
+  },
+  {
+    id: "kyocera-taskalfa-mz4000i", name: "교세라 TASKalfa MZ4000i", category: "A3 흑백복합기", listingGroup: "kyocera-mono", price: "렌탈·구매 상담",
+    spec: "교세라 A3 흑백복합기",
+    description: "흑백 문서 중심의 사무 환경을 위한 교세라 A3 흑백복합기입니다.",
+    image: "/images/product-work-m210.svg", storeUrl: "https://smartstore.naver.com/royaloa",
+    features: ["A3 흑백복합기", "출력·복사·스캔 지원", "설치 환경에 맞춘 렌탈·구매 상담"],
+    details: [{ label: "브랜드", value: "교세라" }, { label: "모델", value: "TASKalfa MZ4000i" }, { label: "구분", value: "A3 흑백복합기" }], visible: true
+  },
+  {
+    id: "kyocera-taskalfa-mz3200i", name: "교세라 TASKalfa MZ3200i", category: "A3 흑백복합기", listingGroup: "kyocera-mono", price: "렌탈·구매 상담",
+    spec: "교세라 A3 흑백복합기",
+    description: "일상적인 문서 출력과 스캔 업무에 적합한 교세라 A3 흑백복합기입니다.",
+    image: "/images/product-work-m210.svg", storeUrl: "https://smartstore.naver.com/royaloa",
+    features: ["A3 흑백복합기", "출력·복사·스캔 지원", "설치 환경에 맞춘 렌탈·구매 상담"],
+    details: [{ label: "브랜드", value: "교세라" }, { label: "모델", value: "TASKalfa MZ3200i" }, { label: "구분", value: "A3 흑백복합기" }], visible: true
+  },
+  {
+    id: "kyocera-ecosys-ma3500", name: "교세라 ECOSYS MA3500fx / MA3500wfx", category: "A4 컬러복합기", listingGroup: "kyocera-color", price: "렌탈·구매 상담",
+    spec: "소형 A4 전용 컬러복합기",
+    description: "설치 공간이 작은 사무실과 데스크 주변에 적합한 교세라 A4 전용 소형 컬러복합기입니다.",
+    image: "/images/product-scan-x500.svg", storeUrl: "https://smartstore.naver.com/royaloa",
+    features: ["A4 전용 소형 컬러복합기", "컬러 출력·복사·스캔 지원", "유선 및 무선 지원 모델 구성"],
+    details: [{ label: "브랜드", value: "교세라" }, { label: "모델", value: "ECOSYS MA3500fx / MA3500wfx" }, { label: "구분", value: "A4 컬러복합기" }], visible: true
+  },
+  {
+    id: "kyocera-ecosys-pa3500", name: "교세라 ECOSYS PA3500x / PA3500wx", category: "A4 흑백복합기", listingGroup: "kyocera-mono", price: "렌탈·구매 상담",
+    spec: "교세라 A4 전용 흑백복합기",
+    description: "흑백 문서 업무에 적합한 교세라 A4 전용 흑백복합기입니다.",
+    image: "/images/product-office-p220.svg", storeUrl: "https://smartstore.naver.com/royaloa",
+    features: ["A4 전용 흑백복합기", "흑백 문서 업무 지원", "설치 환경에 맞춘 렌탈·구매 상담"],
+    details: [{ label: "브랜드", value: "교세라" }, { label: "모델", value: "ECOSYS PA3500x / PA3500wx" }, { label: "구분", value: "A4 흑백복합기" }], visible: true
   }
 ];
 

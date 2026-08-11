@@ -8,7 +8,7 @@ const { activeKey = "", showButton = true } = Astro.props;
     <p class="hero-catalog__label">PRODUCT</p>
     <ul class="hero-catalog__menu">
       {sidebarItems.map((item) => (
-        <li><a class:list={["hero-catalog__menu-link", activeKey === item.key && "is-active"]} href={item.href}><strong>{item.label}</strong><span>{item.section}</span></a></li>
+        <li><a class:list={["hero-catalog__menu-link", (activeKey === item.key || (item.key === "kyocera" && activeKey.startsWith("kyocera-"))) && "is-active"]} href={item.href}><strong>{item.label}</strong><span>{item.section}</span></a></li>
       ))}
     </ul>
   </div>

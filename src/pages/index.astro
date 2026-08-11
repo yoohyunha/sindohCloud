@@ -15,14 +15,14 @@ import { featuredProducts } from "../data/products";
       <div class="hero-catalog__intro">
         <p class="hero__eyebrow">SINDOH CLOUD</p>
         <h1>SindohCloud <br> 기업의 출력 환경을 설계하고, 설치 이후까지 책임집니다. </h1>
-        <p class="hero__description">D450·D470·D320을 중심으로 사무실에 맞는 신도 복합기와 관리 방식을 제안합니다.</p>
+        <p class="hero__description">사무실에 맞는 신도 복합기와 관리 방식을 제안합니다.</p>
         <div class="hero__actions"><a class="button button--compare" href="/products">주력 모델 비교하기</a><a class="button button--ghost" href="/contact">상담 문의</a></div>
       </div>
       <HeroProductShowcase products={featuredProducts} />
     </div>
   </div></section>
   <section class="section"><div class="container">
-    <SectionHeading eyebrow="MAIN MODELS" title="신도클라우드 주력 복합기" description="제품을 누르면 외부 쇼핑몰이 아닌 상세정보 페이지에서 먼저 사양과 특징을 확인할 수 있습니다." />
+    <SectionHeading eyebrow="MAIN MODELS" title="신도클라우드 주력 복합기" description="제품을 누르면 상세정보 페이지에서 먼저 사양과 특징을 확인할 수 있습니다." />
     <div class="product-grid">{featuredProducts.map((product) => <ProductCard product={product} />)}</div>
   </div></section>
   <section class="section section--soft"><div class="container">

@@ -46,5 +46,7 @@ export const sidebarItems = [
   { key: "rental", label: "복합기 렌탈", href: "/products/rental", section: "Rental" },
   { key: "multifunction", label: "복합기 구매", href: "/products/multifunction", section: "Multifunction" },
   { key: "printer", label: "프린터 구매", href: "/products/printer", section: "Printer" },
-  { key: "supplies", label: "소모품", href: "/products/supplies", section: "Consumables" }
+  { key: "shredder", label: "문서세단기", href: "/products/shredder", section: "Shredder" },
+  { key: "supplies", label: "소모품", href: "/products/supplies", section: "Consumables" },
+  { key: "kyocera", label: "교세라", href: "/products/kyocera-color", section: "KYOCERA" }
 ];

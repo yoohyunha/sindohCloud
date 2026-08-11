@@ -8,23 +8,38 @@ import { visibleProducts } from "../../data/products";
 const groupMeta = {
   rental: {
     title: "렌탈임대 제품",
-    description: "임대상품과 렌탈 제품만 모아 빠르게 비교할 수 있도록 구성했습니다.",
+    description: "",
     activeKey: "rental"
   },
   multifunction: {
     title: "복합기 구매 제품",
-    description: "복합기 구매가 필요한 고객을 위해 복합기 제품만 모아 보여줍니다.",
+    description: "",
     activeKey: "multifunction"
   },
   printer: {
     title: "프린터 구매 제품",
-    description: "프린터 구매가 필요한 고객을 위해 프린터 제품만 따로 정리했습니다.",
+    description: "",
     activeKey: "printer"
   },
   supplies: {
     title: "소모품",
-    description: "운영에 필요한 소모품만 따로 확인할 수 있게 구성했습니다.",
+    description: "",
     activeKey: "supplies"
+  },
+  shredder: {
+    title: "문서세단기",
+    description: "",
+    activeKey: "shredder"
+  },
+  "kyocera-mono": {
+    title: "교세라 흑백복합기",
+    description: "",
+    activeKey: "kyocera-mono"
+  },
+  "kyocera-color": {
+    title: "교세라 컬러복합기",
+    description: "",
+    activeKey: "kyocera-color"
   }
 } as const;
 
@@ -33,12 +48,16 @@ export function getStaticPaths() {
     { params: { group: "rental" } },
     { params: { group: "multifunction" } },
     { params: { group: "printer" } },
-    { params: { group: "supplies" } }
+    { params: { group: "supplies" } },
+    { params: { group: "shredder" } },
+    { params: { group: "kyocera-mono" } },
+    { params: { group: "kyocera-color" } }
   ];
 }
 
 const group = Astro.params.group as keyof typeof groupMeta;
 const meta = groupMeta[group];
+const activeKey = meta.activeKey;
 const filteredProducts = visibleProducts.filter((product) => product.listingGroup === group);
 ---
 
@@ -65,9 +84,23 @@ const filteredProducts = visibleProducts.filter((product) => product.listingGrou
             </div>
           </div>
 
+          {activeKey.startsWith("kyocera-") && (
+            <nav class="product-category-tabs" aria-label="교세라 제품 분류">
+              <a class:list={[activeKey === "kyocera-color" && "is-active"]} href="/products/kyocera-color">컬러복합기</a>
+              <a class:list={[activeKey === "kyocera-mono" && "is-active"]} href="/products/kyocera-mono">흑백복합기</a>
+            </nav>
+          )}
+
           <div class="product-grid">
             {filteredProducts.map((product) => <ProductCard product={product} />)}
           </div>
+          {filteredProducts.length === 0 && (
+            <div class="product-empty">
+              <strong>제품을 준비하고 있습니다.</strong>
+              <p>원하시는 모델이나 설치 환경을 알려주시면 먼저 상담해드리겠습니다.</p>
+              <a class="button button--secondary" href="/contact">제품 문의하기</a>
+            </div>
+          )}
         </div>
       </div>
     </div>
