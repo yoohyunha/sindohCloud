@@ -91,6 +91,54 @@ export const products: Product[] = [
     ], featured: true, visible: true
   },
   {
+    id: "s2-270p1", name: "S2 문서세단기 270P1", category: "중형 문서세단기", listingGroup: "shredder", price: "구매 상담",
+    spec: "최대 25~26매 · 꽃가루형 3 × 30 mm · 파지함 70 L",
+    description: "대량 문서와 CD·카드를 함께 세단할 수 있는 중형 문서세단기입니다. 자동 절전과 터치 스크린을 지원합니다.",
+    image: "/images/shredders/s2-270p1.jpg",
+    gallery: ["/images/shredders/s2-270p1.jpg"],
+    detailImages: ["/images/shredders/s2-270p1-detail.jpg"],
+    storeUrl: "https://smartstore.naver.com/royaloa",
+    officialUrl: "http://s2company.co.kr/default/product/product_1.php?com_board_basic=read_form&com_board_idx=70&tit=03&sub=01&com_board_id=7&com_board_category_code=c2",
+    features: ["최대 25~26매 동시 세단", "CD·카드 세단 지원", "자동 절전 및 자동 역회전", "터치 스크린 조작부"],
+    details: [
+      { label: "최대 투입폭", value: "270 mm" }, { label: "동시 세단 매수", value: "25~26매 (A4 75g 기준)" },
+      { label: "세단 형태", value: "꽃가루형" }, { label: "세단 크기", value: "3 × 30 mm" },
+      { label: "파지함 용량", value: "70 L" }, { label: "제품 크기 / 무게", value: "490 × 410 × 780 mm / 50 kg" }
+    ], visible: true
+  },
+  {
+    id: "s2-230pn", name: "S2 문서세단기 230PN", category: "소형 문서세단기", listingGroup: "shredder", price: "구매 상담",
+    spec: "최대 10~11매 · 꽃가루형 2.5 × 10 mm · 파지함 35 L",
+    description: "문서 투입을 자동 감지하고 과전류·과부하를 보호하는 소형 문서세단기입니다. 저소음 설계와 수동 세단 모드를 지원합니다.",
+    image: "/images/shredders/s2-230pn.jpg",
+    gallery: ["/images/shredders/s2-230pn.jpg"],
+    detailImages: ["/images/shredders/s2-230pn-detail.jpg"],
+    storeUrl: "https://smartstore.naver.com/royaloa",
+    officialUrl: "http://s2company.co.kr/default/product/product_1.php?com_board_basic=read_form&com_board_idx=72&tit=03&sub=01&com_board_id=7&com_board_category_code=c1",
+    features: ["문서 투입 자동 감지", "과전류 차단 및 모터 보호", "과부하 자동 역회전", "최저소음 55 dB"],
+    details: [
+      { label: "최대 투입폭", value: "230 mm" }, { label: "동시 세단 매수", value: "10~11매 (A4 75g 기준)" },
+      { label: "세단 형태", value: "꽃가루형" }, { label: "세단 크기", value: "2.5 × 10 mm" },
+      { label: "파지함 용량", value: "35 L" }, { label: "제품 크기 / 무게", value: "390 × 325 × 665 mm / 27 kg" }
+    ], visible: true
+  },
+  {
+    id: "s2-250pn", name: "S2 문서세단기 250PN", category: "소형 문서세단기", listingGroup: "shredder", price: "구매 상담",
+    spec: "최대 14~15매 · 꽃가루형 2 × 10 mm · 파지함 40 L",
+    description: "넉넉한 40 L 파지함과 세밀한 꽃가루형 세단 방식을 갖춘 소형 문서세단기입니다. 문서 투입 자동 감지와 안전 보호 기능을 지원합니다.",
+    image: "/images/shredders/s2-250pn.jpg",
+    gallery: ["/images/shredders/s2-250pn.jpg"],
+    detailImages: ["/images/shredders/s2-250pn-detail.jpg"],
+    storeUrl: "https://smartstore.naver.com/royaloa",
+    officialUrl: "http://s2company.co.kr/default/product/product_1.php?com_board_basic=read_form&com_board_idx=32&tit=03&sub=01&com_board_id=7&com_board_category_code=c1",
+    features: ["최대 14~15매 동시 세단", "문서 투입 자동 감지", "과전류 차단 및 모터 보호", "과부하 자동 역회전"],
+    details: [
+      { label: "최대 투입폭", value: "230 mm" }, { label: "동시 세단 매수", value: "14~15매 (A4 75g 기준)" },
+      { label: "세단 형태", value: "꽃가루형" }, { label: "세단 크기", value: "2 × 10 mm" },
+      { label: "파지함 용량", value: "40 L" }, { label: "제품 크기 / 무게", value: "390 × 325 × 770 mm / 30 kg" }
+    ], visible: true
+  },
+  {
     id: "kyocera-taskalfa-3554cig", name: "교세라 TASKalfa 3554ciG", category: "A3 컬러복합기", listingGroup: "kyocera-color", price: "렌탈·구매 상담",
     spec: "교세라 TASKalfa 컬러복합기",
     description: "사무실의 컬러 문서 출력과 복사, 스캔 업무를 한 대로 처리하는 교세라 A3 컬러복합기입니다.",
