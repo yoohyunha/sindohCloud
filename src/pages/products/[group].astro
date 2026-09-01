@@ -31,15 +31,25 @@ const groupMeta = {
     description: "",
     activeKey: "shredder"
   },
-  "kyocera-mono": {
+  "kyocera-bw-mfp": {
     title: "교세라 흑백복합기",
     description: "",
-    activeKey: "kyocera-mono"
+    activeKey: "kyocera-bw-mfp"
   },
-  "kyocera-color": {
+  "kyocera-color-mfp": {
     title: "교세라 컬러복합기",
     description: "",
-    activeKey: "kyocera-color"
+    activeKey: "kyocera-color-mfp"
+  },
+  "kyocera-color-printer": {
+    title: "교세라 컬러프린터",
+    description: "",
+    activeKey: "kyocera-color-printer"
+  },
+  "kyocera-bw-printer": {
+    title: "교세라 흑백프린터",
+    description: "",
+    activeKey: "kyocera-bw-printer"
   }
 } as const;
 
@@ -50,8 +60,10 @@ export function getStaticPaths() {
     { params: { group: "printer" } },
     { params: { group: "supplies" } },
     { params: { group: "shredder" } },
-    { params: { group: "kyocera-mono" } },
-    { params: { group: "kyocera-color" } }
+    { params: { group: "kyocera-bw-mfp" } },
+    { params: { group: "kyocera-color-mfp" } },
+    { params: { group: "kyocera-color-printer" } },
+    { params: { group: "kyocera-bw-printer" } }
   ];
 }
 
@@ -86,8 +98,10 @@ const filteredProducts = visibleProducts.filter((product) => product.listingGrou
 
           {activeKey.startsWith("kyocera-") && (
             <nav class="product-category-tabs" aria-label="교세라 제품 분류">
-              <a class:list={[activeKey === "kyocera-color" && "is-active"]} href="/products/kyocera-color">컬러복합기</a>
-              <a class:list={[activeKey === "kyocera-mono" && "is-active"]} href="/products/kyocera-mono">흑백복합기</a>
+              <a class:list={[activeKey === "kyocera-color-mfp" && "is-active"]} href="/products/kyocera-color-mfp">컬러복합기</a>
+              <a class:list={[activeKey === "kyocera-color-printer" && "is-active"]} href="/products/kyocera-color-printer">컬러프린터</a>
+              <a class:list={[activeKey === "kyocera-bw-mfp" && "is-active"]} href="/products/kyocera-bw-mfp">흑백복합기</a>
+              <a class:list={[activeKey === "kyocera-bw-printer" && "is-active"]} href="/products/kyocera-bw-printer">흑백프린터</a>
             </nav>
           )}
 

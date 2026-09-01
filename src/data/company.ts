@@ -48,5 +48,5 @@ export const sidebarItems = [
   { key: "printer", label: "프린터 구매", href: "/products/printer", section: "Printer" },
   { key: "shredder", label: "문서세단기", href: "/products/shredder", section: "Shredder" },
   { key: "supplies", label: "소모품", href: "/products/supplies", section: "Consumables" },
-  { key: "kyocera", label: "교세라", href: "/products/kyocera-color", section: "KYOCERA" }
+  { key: "kyocera", label: "교세라", href: "/products/kyocera-color-mfp", section: "Kyocera" }
 ];

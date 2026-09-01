@@ -1,5 +1,14 @@
 import type { Product } from "../types";
 
+const taskalfaCatalogImages = [
+  "/catalogs/images/taskalfa-catalog-2-1.jpg",
+  "/catalogs/images/taskalfa-catalog-2-2.jpg",
+  "/catalogs/images/taskalfa-catalog-2-3.jpg"
+];
+const mzCatalogImages = Array.from({ length: 6 }, (_, index) => `/catalogs/images/mz-catalog-${index + 1}.jpg`);
+const ma3500cifxCatalogImages = Array.from({ length: 8 }, (_, index) => `/catalogs/images/ma3500cifx-catalog-${index + 1}.jpg`);
+const pa3500cxCatalogImages = Array.from({ length: 6 }, (_, index) => `/catalogs/images/pa3500cx-catalog-${index + 1}.jpg`);
+
 export const products: Product[] = [
   {
     id: "sindoh-d470", name: "신도 A3 컬러복합기 D470", category: "A3 컬러 복합기", listingGroup: "rental", price: "렌탈·구매 상담",
@@ -96,7 +105,7 @@ export const products: Product[] = [
     description: "대량 문서와 CD·카드를 함께 세단할 수 있는 중형 문서세단기입니다. 자동 절전과 터치 스크린을 지원합니다.",
     image: "/images/shredders/s2-270p1.jpg",
     gallery: ["/images/shredders/s2-270p1.jpg"],
-    detailImages: ["/images/shredders/s2-270p1-detail.jpg"],
+    detailImages: ["/images/shredders/s2-270p1-detail.jpg"], detailImageCropHeight: 3075,
     storeUrl: "https://smartstore.naver.com/royaloa",
     officialUrl: "http://s2company.co.kr/default/product/product_1.php?com_board_basic=read_form&com_board_idx=70&tit=03&sub=01&com_board_id=7&com_board_category_code=c2",
     features: ["최대 25~26매 동시 세단", "CD·카드 세단 지원", "자동 절전 및 자동 역회전", "터치 스크린 조작부"],
@@ -112,7 +121,7 @@ export const products: Product[] = [
     description: "문서 투입을 자동 감지하고 과전류·과부하를 보호하는 소형 문서세단기입니다. 저소음 설계와 수동 세단 모드를 지원합니다.",
     image: "/images/shredders/s2-230pn.jpg",
     gallery: ["/images/shredders/s2-230pn.jpg"],
-    detailImages: ["/images/shredders/s2-230pn-detail.jpg"],
+    detailImages: ["/images/shredders/s2-230pn-detail.jpg"], detailImageCropHeight: 2800,
     storeUrl: "https://smartstore.naver.com/royaloa",
     officialUrl: "http://s2company.co.kr/default/product/product_1.php?com_board_basic=read_form&com_board_idx=72&tit=03&sub=01&com_board_id=7&com_board_category_code=c1",
     features: ["문서 투입 자동 감지", "과전류 차단 및 모터 보호", "과부하 자동 역회전", "최저소음 55 dB"],
@@ -128,7 +137,7 @@ export const products: Product[] = [
     description: "넉넉한 40 L 파지함과 세밀한 꽃가루형 세단 방식을 갖춘 소형 문서세단기입니다. 문서 투입 자동 감지와 안전 보호 기능을 지원합니다.",
     image: "/images/shredders/s2-250pn.jpg",
     gallery: ["/images/shredders/s2-250pn.jpg"],
-    detailImages: ["/images/shredders/s2-250pn-detail.jpg"],
+    detailImages: ["/images/shredders/s2-250pn-detail.jpg"], detailImageCropHeight: 2800,
     storeUrl: "https://smartstore.naver.com/royaloa",
     officialUrl: "http://s2company.co.kr/default/product/product_1.php?com_board_basic=read_form&com_board_idx=32&tit=03&sub=01&com_board_id=7&com_board_category_code=c1",
     features: ["최대 14~15매 동시 세단", "문서 투입 자동 감지", "과전류 차단 및 모터 보호", "과부하 자동 역회전"],
@@ -139,60 +148,125 @@ export const products: Product[] = [
     ], visible: true
   },
   {
-    id: "kyocera-taskalfa-3554cig", name: "교세라 TASKalfa 3554ciG", category: "A3 컬러복합기", listingGroup: "kyocera-color", price: "렌탈·구매 상담",
-    spec: "교세라 TASKalfa 컬러복합기",
-    description: "사무실의 컬러 문서 출력과 복사, 스캔 업무를 한 대로 처리하는 교세라 A3 컬러복합기입니다.",
-    image: "/images/product-prime-c350.svg", storeUrl: "https://smartstore.naver.com/royaloa",
-    features: ["A3 컬러복합기", "출력·복사·스캔 지원", "설치 환경에 맞춘 렌탈·구매 상담"],
-    details: [{ label: "브랜드", value: "교세라" }, { label: "제품군", value: "TASKalfa" }, { label: "구분", value: "컬러복합기" }], visible: true
+    id: "kyocera-taskalfa-3554cig", name: "교세라 TASKalfa 3554ciG", category: "A3 컬러복합기", listingGroup: "kyocera-color-mfp", price: "렌탈·구매 상담",
+    spec: "컬러/흑백 35 ppm · 10.1인치 터치 패널 · A3 출력",
+    description: "A3 컬러 문서의 출력·복사·스캔을 빠르게 처리하며, 모바일 연결과 문서 보안 기능을 함께 제공하는 교세라 TASKalfa 컬러복합기입니다.",
+    image: "https://www.kyoceradocumentsolutions.com/hk/en/products/mfp/taskalfa-3554ci/assets/images/taskalfa-7054ci_3.jpg",
+    gallery: [
+      "https://www.kyoceradocumentsolutions.com/hk/en/products/mfp/taskalfa-3554ci/assets/images/taskalfa-7054ci_3.jpg",
+      "https://www.kyoceradocumentsolutions.com/hk/en/products/mfp/taskalfa-3554ci/assets/images/taskalfa-7054ci_1.jpg",
+      "https://www.kyoceradocumentsolutions.com/hk/en/products/mfp/taskalfa-3554ci/assets/images/index_main-visual_10_pc.jpg"
+    ],
+    detailImages: taskalfaCatalogImages,
+    storeUrl: "https://smartstore.naver.com/royaloa",
+    officialUrl: "https://www.kyoceradocumentsolutions.com/kr/ko/products/government/taskalfa-5054cig/",
+    catalogUrl: "/catalogs/kyocera-taskalfa-2554cig-3554cig-4054cig.pdf",
+    features: ["컬러/흑백 35ppm 출력", "10.1인치 저항막 방식 터치 패널", "A3·SRA3 및 배너 인쇄 지원", "KYOCERA MyPanel 모바일 제어", "문서 데이터와 장치 보안 강화"],
+    details: [
+      { label: "브랜드", value: "교세라" }, { label: "제품군", value: "TASKalfa" }, { label: "구분", value: "A3 컬러복합기" },
+      { label: "출력 속도", value: "컬러/흑백 35 ppm" }, { label: "스캔 속도", value: "최대 100 ipm 단면 / 200 ipm 양면 (옵션 DP-7160/7170)" },
+      { label: "메모리 / 저장장치", value: "4GB / 32GB SSD 기본" }, { label: "조작 패널", value: "10.1인치 저항막 방식 터치 패널" },
+      { label: "제품 크기 / 무게", value: "602 × 665 × 790 mm / 약 90 kg" }
+    ], visible: true
   },
   {
-    id: "kyocera-taskalfa-2554cig", name: "교세라 TASKalfa 2554ciG", category: "A3 컬러복합기", listingGroup: "kyocera-color", price: "렌탈·구매 상담",
-    spec: "교세라 TASKalfa 컬러복합기",
-    description: "다양한 사무 문서를 안정적으로 처리할 수 있도록 구성된 교세라 A3 컬러복합기입니다.",
-    image: "/images/product-prime-c350.svg", storeUrl: "https://smartstore.naver.com/royaloa",
-    features: ["A3 컬러복합기", "출력·복사·스캔 지원", "설치 환경에 맞춘 렌탈·구매 상담"],
-    details: [{ label: "브랜드", value: "교세라" }, { label: "제품군", value: "TASKalfa" }, { label: "구분", value: "컬러복합기" }], visible: true
+    id: "kyocera-taskalfa-2554cig", name: "교세라 TASKalfa 2554ciG", category: "A3 컬러복합기", listingGroup: "kyocera-color-mfp", price: "렌탈·구매 상담",
+    spec: "컬러/흑백 25 ppm · 10.1인치 터치 패널 · A3 출력",
+    description: "A3 컬러 문서 출력과 복사·스캔을 안정적으로 처리하고, 직관적인 터치 조작과 보안 기능을 제공하는 교세라 컬러복합기입니다.",
+    image: "https://www.kyoceradocumentsolutions.com/hk/en/products/mfp/taskalfa-3554ci/assets/images/taskalfa-7054ci_1.jpg",
+    gallery: [
+      "https://www.kyoceradocumentsolutions.com/hk/en/products/mfp/taskalfa-3554ci/assets/images/taskalfa-7054ci_1.jpg",
+      "https://www.kyoceradocumentsolutions.com/hk/en/products/mfp/taskalfa-3554ci/assets/images/taskalfa-7054ci_3.jpg",
+      "https://www.kyoceradocumentsolutions.com/hk/en/products/mfp/taskalfa-3554ci/assets/images/index_sub-visual_17.jpg"
+    ],
+    detailImages: taskalfaCatalogImages,
+    storeUrl: "https://smartstore.naver.com/royaloa",
+    officialUrl: "https://www.kyoceradocumentsolutions.com/kr/ko/products/government/taskalfa-5054cig/",
+    catalogUrl: "/catalogs/kyocera-taskalfa-2554cig-3554cig-4054cig.pdf",
+    features: ["컬러/흑백 25ppm 출력", "10.1인치 저항막 방식 터치 패널", "A3·SRA3 및 배너 인쇄 지원", "문서 공유와 모바일 제어 지원", "문서 데이터와 장치 보안 강화"],
+    details: [
+      { label: "브랜드", value: "교세라" }, { label: "제품군", value: "TASKalfa" }, { label: "구분", value: "A3 컬러복합기" },
+      { label: "출력 속도", value: "컬러/흑백 25 ppm" }, { label: "스캔 속도", value: "최대 100 ipm 단면 / 200 ipm 양면 (옵션 DP-7160/7170)" },
+      { label: "메모리 / 저장장치", value: "4GB / 32GB SSD 기본" }, { label: "조작 패널", value: "10.1인치 저항막 방식 터치 패널" },
+      { label: "제품 크기 / 무게", value: "602 × 665 × 790 mm / 약 90 kg" }
+    ], visible: true
   },
   {
-    id: "kyocera-taskalfa-4054cig", name: "교세라 TASKalfa 4054ciG", category: "A3 컬러복합기", listingGroup: "kyocera-color", price: "렌탈·구매 상담",
-    spec: "교세라 TASKalfa 컬러복합기",
-    description: "출력량이 많은 업무 환경에도 대응할 수 있는 교세라 TASKalfa 컬러복합기입니다.",
-    image: "/images/product-prime-c350.svg", storeUrl: "https://smartstore.naver.com/royaloa",
-    features: ["A3 컬러복합기", "출력·복사·스캔 지원", "설치 환경에 맞춘 렌탈·구매 상담"],
-    details: [{ label: "브랜드", value: "교세라" }, { label: "제품군", value: "TASKalfa" }, { label: "구분", value: "컬러복합기" }], visible: true
+    id: "kyocera-taskalfa-4054cig", name: "교세라 TASKalfa 4054ciG", category: "A3 컬러복합기", listingGroup: "kyocera-color-mfp", price: "렌탈·구매 상담",
+    spec: "컬러/흑백 40 ppm · 10.1인치 터치 패널 · A3 출력",
+    description: "분당 40매의 컬러·흑백 출력 속도로 출력량이 많은 업무 환경에 대응하는 교세라 TASKalfa A3 컬러복합기입니다.",
+    image: "https://www.kyoceradocumentsolutions.com/hk/en/products/mfp/taskalfa-3554ci/assets/images/taskalfa-7054ci_5.jpg",
+    gallery: [
+      "https://www.kyoceradocumentsolutions.com/hk/en/products/mfp/taskalfa-3554ci/assets/images/taskalfa-7054ci_5.jpg",
+      "https://www.kyoceradocumentsolutions.com/hk/en/products/mfp/taskalfa-3554ci/assets/images/taskalfa-7054ci_7.jpg",
+      "https://www.kyoceradocumentsolutions.com/hk/en/products/mfp/taskalfa-3554ci/assets/images/index_main-visual_10_pc.jpg"
+    ],
+    detailImages: taskalfaCatalogImages,
+    storeUrl: "https://smartstore.naver.com/royaloa",
+    officialUrl: "https://www.kyoceradocumentsolutions.com/kr/ko/products/government/taskalfa-5054cig/",
+    catalogUrl: "/catalogs/kyocera-taskalfa-2554cig-3554cig-4054cig.pdf",
+    features: ["컬러/흑백 40ppm 출력", "10.1인치 저항막 방식 터치 패널", "A3·SRA3 및 배너 인쇄 지원", "고속 스캔과 모바일 제어 지원", "문서 데이터와 장치 보안 강화"],
+    details: [
+      { label: "브랜드", value: "교세라" }, { label: "제품군", value: "TASKalfa" }, { label: "구분", value: "A3 컬러복합기" },
+      { label: "출력 속도", value: "컬러/흑백 40 ppm" }, { label: "스캔 속도", value: "최대 100 ipm 단면 / 200 ipm 양면 (옵션 DP-7160/7170)" },
+      { label: "메모리 / 저장장치", value: "4GB / 32GB SSD 기본" }, { label: "조작 패널", value: "10.1인치 저항막 방식 터치 패널" },
+      { label: "제품 크기 / 무게", value: "602 × 665 × 790 mm / 약 90 kg" }
+    ], visible: true
   },
   {
-    id: "kyocera-taskalfa-mz4000i", name: "교세라 TASKalfa MZ4000i", category: "A3 흑백복합기", listingGroup: "kyocera-mono", price: "렌탈·구매 상담",
+    id: "kyocera-taskalfa-mz4000i", name: "교세라 TASKalfa MZ4000i", category: "A3 흑백복합기", listingGroup: "kyocera-bw-mfp", price: "렌탈·구매 상담",
     spec: "교세라 A3 흑백복합기",
     description: "흑백 문서 중심의 사무 환경을 위한 교세라 A3 흑백복합기입니다.",
-    image: "/images/product-work-m210.svg", storeUrl: "https://smartstore.naver.com/royaloa",
+    image: "https://www.kyoceradocumentsolutions.com/kr/ko/products/mfp/taskalfa-mz4000i/assets/images/taskalfa-MZ4000i_1.jpg", storeUrl: "https://smartstore.naver.com/royaloa",
+    officialUrl: "https://www.kyoceradocumentsolutions.com/kr/ko/products/mfp/taskalfa-mz4000i/index.html",
+    catalogUrl: "/catalogs/kyocera-taskalfa-mz3200i-mz4000i.pdf",
+    detailImages: mzCatalogImages,
     features: ["A3 흑백복합기", "출력·복사·스캔 지원", "설치 환경에 맞춘 렌탈·구매 상담"],
     details: [{ label: "브랜드", value: "교세라" }, { label: "모델", value: "TASKalfa MZ4000i" }, { label: "구분", value: "A3 흑백복합기" }], visible: true
   },
   {
-    id: "kyocera-taskalfa-mz3200i", name: "교세라 TASKalfa MZ3200i", category: "A3 흑백복합기", listingGroup: "kyocera-mono", price: "렌탈·구매 상담",
+    id: "kyocera-taskalfa-mz3200i", name: "교세라 TASKalfa MZ3200i", category: "A3 흑백복합기", listingGroup: "kyocera-bw-mfp", price: "렌탈·구매 상담",
     spec: "교세라 A3 흑백복합기",
     description: "일상적인 문서 출력과 스캔 업무에 적합한 교세라 A3 흑백복합기입니다.",
-    image: "/images/product-work-m210.svg", storeUrl: "https://smartstore.naver.com/royaloa",
+    image: "https://www.kyoceradocumentsolutions.com/kr/ko/products/mfp/taskalfa-mz4000i/assets/images/taskalfa-MZ3200i_1.jpg", storeUrl: "https://smartstore.naver.com/royaloa",
+    officialUrl: "https://www.kyoceradocumentsolutions.com/kr/ko/products/mfp/taskalfa-mz4000i/index.html",
+    catalogUrl: "/catalogs/kyocera-taskalfa-mz3200i-mz4000i.pdf",
+    detailImages: mzCatalogImages,
     features: ["A3 흑백복합기", "출력·복사·스캔 지원", "설치 환경에 맞춘 렌탈·구매 상담"],
     details: [{ label: "브랜드", value: "교세라" }, { label: "모델", value: "TASKalfa MZ3200i" }, { label: "구분", value: "A3 흑백복합기" }], visible: true
   },
   {
-    id: "kyocera-ecosys-ma3500", name: "교세라 ECOSYS MA3500fx / MA3500wfx", category: "A4 컬러복합기", listingGroup: "kyocera-color", price: "렌탈·구매 상담",
-    spec: "소형 A4 전용 컬러복합기",
-    description: "설치 공간이 작은 사무실과 데스크 주변에 적합한 교세라 A4 전용 소형 컬러복합기입니다.",
-    image: "/images/product-scan-x500.svg", storeUrl: "https://smartstore.naver.com/royaloa",
-    features: ["A4 전용 소형 컬러복합기", "컬러 출력·복사·스캔 지원", "유선 및 무선 지원 모델 구성"],
-    details: [{ label: "브랜드", value: "교세라" }, { label: "모델", value: "ECOSYS MA3500fx / MA3500wfx" }, { label: "구분", value: "A4 컬러복합기" }], visible: true
+    id: "kyocera-ecosys-ma3500", name: "교세라 ECOSYS MA3500cifx", category: "A4 컬러복합기", listingGroup: "kyocera-color-mfp", price: "렌탈·구매 상담",
+    spec: "컬러/흑백 35 ppm · 7인치 터치 패널 · 양면 스캔 ADF",
+    description: "컴팩트한 본체에 컬러 출력·복사·스캔·팩스를 담은 교세라 A4 컬러복합기입니다. 사무실과 공유 업무 공간에 적합합니다.",
+    image: "https://www.kyoceradocumentsolutions.com/kr/ko/products/mfp/ecosys-ma4000cifx/assets/images/product/ecosys-ma3500cifx_01.jpg",
+    gallery: [
+      "https://www.kyoceradocumentsolutions.com/kr/ko/products/mfp/ecosys-ma4000cifx/assets/images/product/ecosys-ma3500cifx_01.jpg",
+      "https://www.kyoceradocumentsolutions.com/kr/ko/products/mfp/ecosys-ma4000cifx/assets/images/index_main-visual_01_pc.jpg",
+      "https://www.kyoceradocumentsolutions.com/kr/ko/products/mfp/ecosys-ma4000cifx/assets/images/index_sub-visual_02.jpg"
+    ],
+    detailImages: ma3500cifxCatalogImages,
+    storeUrl: "https://smartstore.naver.com/royaloa",
+    officialUrl: "https://www.kyoceradocumentsolutions.com/kr/ko/products/mfp/ecosys-ma4000cifx/index.html",
+    catalogUrl: "/catalogs/kyocera-ecosys-ma3500cifx.pdf",
+    features: ["A4 컬러·흑백 35ppm 출력", "복사·출력·스캔·팩스 지원", "7인치 컬러 터치 패널", "100매 양면 스캔 자동원고이송장치"],
+    details: [
+      { label: "브랜드", value: "교세라" }, { label: "모델", value: "ECOSYS MA3500cifx" },
+      { label: "구분", value: "A4 컬러복합기" }, { label: "출력 속도", value: "컬러/흑백 35 ppm" },
+      { label: "주요 기능", value: "복사·출력·스캔·팩스" }, { label: "조작 패널", value: "7인치 터치 스크린" },
+      { label: "자동원고이송장치", value: "100매 양면 스캔 타입" }, { label: "출력 해상도", value: "1,200 × 1,200 dpi" }
+    ], visible: true
   },
   {
-    id: "kyocera-ecosys-pa3500", name: "교세라 ECOSYS PA3500x / PA3500wx", category: "A4 흑백복합기", listingGroup: "kyocera-mono", price: "렌탈·구매 상담",
-    spec: "교세라 A4 전용 흑백복합기",
-    description: "흑백 문서 업무에 적합한 교세라 A4 전용 흑백복합기입니다.",
-    image: "/images/product-office-p220.svg", storeUrl: "https://smartstore.naver.com/royaloa",
-    features: ["A4 전용 흑백복합기", "흑백 문서 업무 지원", "설치 환경에 맞춘 렌탈·구매 상담"],
-    details: [{ label: "브랜드", value: "교세라" }, { label: "모델", value: "ECOSYS PA3500x / PA3500wx" }, { label: "구분", value: "A4 흑백복합기" }], visible: true
+    id: "kyocera-ecosys-pa3500", name: "교세라 ECOSYS PA3500cx", category: "A4 컬러프린터", listingGroup: "kyocera-color-printer", price: "렌탈·구매 상담",
+    spec: "컬러 35 ppm · A4 데스크톱 프린터 · 양면 출력",
+    description: "컴팩트한 본체와 양면 출력, 유선·무선 연결을 갖춘 교세라 A4 컬러 프린터입니다.",
+    image: "https://www.kyoceradocumentsolutions.com/kr/ko/products/printer/ecosys-pa4500cx/assets/images/product/ecosys-pa3500cx_02.jpg", storeUrl: "https://smartstore.naver.com/royaloa",
+    detailImages: pa3500cxCatalogImages,
+    officialUrl: "https://www.kyoceradocumentsolutions.com/kr/ko/products/printer/ecosys-pa4500cx/index.html",
+    catalogUrl: "/catalogs/kyocera-ecosys-pa3500cx.pdf",
+    features: ["A4 컬러 출력", "컬러·흑백 35 ppm 출력", "유선·무선 네트워크 지원", "기본 양면 출력"],
+    details: [{ label: "브랜드", value: "교세라" }, { label: "모델", value: "ECOSYS PA3500cx" }, { label: "구분", value: "A4 컬러프린터" }, { label: "출력 속도", value: "컬러/흑백 35 ppm" }, { label: "양면 출력", value: "기본 지원" }, { label: "제품 크기 / 무게", value: "394 × 533 × 392.5 mm / 33 kg" }], visible: true
   }
 ];
 

@@ -11,6 +11,7 @@ export function getStaticPaths() {
 interface Props { product: Product; }
 const { product } = Astro.props;
 const galleryImages = product.gallery?.length ? product.gallery : [product.image];
+const detailImageCropHeight = product.detailImageCropHeight;
 ---
 <BaseLayout title={`${product.name} 상세정보 | ${company.name}`} description={product.description} path={`/products/detail/${product.id}`}>
   <section class="product-detail"><div class="container">
@@ -20,7 +21,7 @@ const galleryImages = product.gallery?.length ? product.gallery : [product.image
       <div class="product-detail__summary">
         <p class="service-content__eyebrow">{product.category}</p><h1>{product.name}</h1><p class="product-detail__lead">{product.description}</p>
         <p class="product-detail__price">{product.price}</p>
-        <div class="hero__actions"><a class="button" href="/contact">렌탈·구매 상담</a><a class="button button--secondary" href={product.storeUrl} target="_blank" rel="noreferrer">스마트스토어에서 보기</a></div>
+        <div class="hero__actions"><a class="button" href="/contact">렌탈·구매 상담</a><a class="button button--secondary" href={product.storeUrl} target="_blank" rel="noreferrer">스마트스토어에서 보기</a>{product.officialUrl && <a class="button button--secondary" href={product.officialUrl} target="_blank" rel="noreferrer">공식 제품 페이지</a>}</div>
       </div>
     </div>
     <div class="product-detail__grid">
@@ -29,11 +30,16 @@ const galleryImages = product.gallery?.length ? product.gallery : [product.image
     </div>
     {product.detailImages?.length && (
       <section class="product-detail__store-content">
-        <p class="section-heading__eyebrow">SMART STORE DETAIL</p>
-        <h2>상품 상세 설명</h2>
-        <div class="product-detail__store-images">
+        <p class="section-heading__eyebrow">{product.listingGroup.startsWith("kyocera-") ? "PRODUCT CATALOG" : "SMART STORE DETAIL"}</p>
+        <h2>{product.listingGroup.startsWith("kyocera-") ? "제품 카탈로그" : "상품 상세 설명"}</h2>
+        <div
+          class:list={["product-detail__store-images", { "product-detail__store-images--cropped": detailImageCropHeight }]}
+          style={detailImageCropHeight ? `--detail-image-crop-height: ${detailImageCropHeight}` : undefined}
+        >
           {product.detailImages.map((image, index) => (
-            <img src={image} alt={`${product.name} 상세 이미지 ${index + 1}`} loading="lazy" />
+            <div class="product-detail__store-image-frame">
+              <img src={image} alt={`${product.name} 상세 이미지 ${index + 1}`} loading="lazy" />
+            </div>
           ))}
         </div>
         {product.detailNotices?.length && (
