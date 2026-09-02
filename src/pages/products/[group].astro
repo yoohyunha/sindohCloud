@@ -91,7 +91,7 @@ const filteredProducts = visibleProducts.filter((product) => product.listingGrou
               <p class="product-shell__summary">{meta.description}</p>
             </div>
             <div class="product-shell__meta">
-              <span>{filteredProducts.length}개 제품</span>
+              <span>{activeKey === "supplies" ? "소모품 카테고리" : `${filteredProducts.length}개 제품`}</span>
               <a href="/products">전체 제품목록 보기</a>
             </div>
           </div>
@@ -105,10 +105,50 @@ const filteredProducts = visibleProducts.filter((product) => product.listingGrou
             </nav>
           )}
 
-          <div class="product-grid">
+          {activeKey === "supplies" && (
+            <section class="supplies-categories" aria-label="소모품 브랜드 및 제품 분류">
+              <nav class="supplies-brand-tabs" aria-label="소모품 브랜드">
+                <button class="is-active" type="button" data-supplies-brand="sindoh" aria-controls="supplies-sindoh" aria-selected="true">신도</button>
+                <button type="button" data-supplies-brand="kyocera" aria-controls="supplies-kyocera" aria-selected="false">교세라</button>
+              </nav>
+
+              <div class="supplies-category-panel is-active" id="supplies-sindoh" data-supplies-panel="sindoh">
+                <p class="supplies-category-panel__label">신도 소모품</p>
+                <div class="supplies-subcategory-grid">
+                  <a href="#supplies-sindoh-d450">D450</a>
+                  <a href="#supplies-sindoh-d320">D320</a>
+                  <a href="#supplies-sindoh-d470">D470</a>
+                </div>
+              </div>
+
+              <div class="supplies-category-panel" id="supplies-kyocera" data-supplies-panel="kyocera" hidden>
+                <p class="supplies-category-panel__label">교세라 소모품</p>
+                <div class="supplies-product-group">
+                  <h2>복합기</h2>
+                  <div class="supplies-subcategory-grid supplies-subcategory-grid--three">
+                    <a href="#supplies-kyocera-taskalfa-2554cig">TASKalfa 2554ciG</a>
+                    <a href="#supplies-kyocera-taskalfa-3554cig">TASKalfa 3554ciG</a>
+                    <a href="#supplies-kyocera-taskalfa-4054cig">TASKalfa 4054ciG</a>
+                    <a href="#supplies-kyocera-taskalfa-mz3200i">TASKalfa MZ3200i</a>
+                    <a href="#supplies-kyocera-taskalfa-mz4000i">TASKalfa MZ4000i</a>
+                    <a href="#supplies-kyocera-ecosys-ma3500cifx">ECOSYS MA3500cifx</a>
+                  </div>
+                </div>
+                <div class="supplies-product-group">
+                  <h2>프린터</h2>
+                  <div class="supplies-subcategory-grid supplies-subcategory-grid--one">
+                    <a href="#supplies-kyocera-ecosys-pa3500cx">ECOSYS PA3500cx</a>
+                  </div>
+                </div>
+              </div>
+              <p class="supplies-category-note">제품을 선택하면 해당 모델의 소모품을 추가할 수 있습니다.</p>
+            </section>
+          )}
+
+          {activeKey !== "supplies" && <div class="product-grid">
             {filteredProducts.map((product) => <ProductCard product={product} />)}
-          </div>
-          {filteredProducts.length === 0 && (
+          </div>}
+          {activeKey !== "supplies" && filteredProducts.length === 0 && (
             <div class="product-empty">
               <strong>제품을 준비하고 있습니다.</strong>
               <p>원하시는 모델이나 설치 환경을 알려주시면 먼저 상담해드리겠습니다.</p>
@@ -120,3 +160,26 @@ const filteredProducts = visibleProducts.filter((product) => product.listingGrou
     </div>
   </section>
 </BaseLayout>
+
+{activeKey === "supplies" && (
+  <script>
+    const brandButtons = document.querySelectorAll<HTMLButtonElement>("[data-supplies-brand]");
+    const brandPanels = document.querySelectorAll<HTMLElement>("[data-supplies-panel]");
+
+    brandButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const brand = button.dataset.suppliesBrand;
+        brandButtons.forEach((item) => {
+          const isActive = item === button;
+          item.classList.toggle("is-active", isActive);
+          item.setAttribute("aria-selected", String(isActive));
+        });
+        brandPanels.forEach((panel) => {
+          const isActive = panel.dataset.suppliesPanel === brand;
+          panel.classList.toggle("is-active", isActive);
+          panel.hidden = !isActive;
+        });
+      });
+    });
+  </script>
+)}

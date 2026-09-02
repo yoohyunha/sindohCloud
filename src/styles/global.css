@@ -412,6 +412,93 @@ main {
   color: var(--text);
 }
 
+.supplies-categories {
+  margin-bottom: 1.25rem;
+}
+
+.supplies-brand-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.supplies-brand-tabs button {
+  padding: 1rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.supplies-brand-tabs button + button {
+  border-left: 1px solid var(--line);
+}
+
+.supplies-brand-tabs button:hover,
+.supplies-brand-tabs button.is-active {
+  background: var(--bg-soft);
+  color: var(--text);
+}
+
+.supplies-category-panel {
+  margin-top: 0.75rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.supplies-category-panel__label {
+  margin: 0 0 0.75rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.supplies-subcategory-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.supplies-product-group + .supplies-product-group {
+  margin-top: 1.25rem;
+}
+
+.supplies-product-group h2 {
+  margin: 0 0 0.7rem;
+  font-size: 1rem;
+}
+
+.supplies-subcategory-grid--one {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: calc((100% - 1.5rem) / 3);
+}
+
+.supplies-subcategory-grid a {
+  padding: 1.1rem 1rem;
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-weight: 800;
+  text-align: center;
+}
+
+.supplies-subcategory-grid a:hover {
+  border-color: var(--text);
+  background: var(--bg-soft);
+}
+
+.supplies-category-note {
+  margin: 0.85rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
 .hero-showcase__header {
   max-width: 820px;
   margin-bottom: 0;

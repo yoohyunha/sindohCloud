@@ -21,3 +21,7 @@ npm run dev
   - Build command: `npm run build`
   - Output directory: `dist`
 - 정식 도메인을 연결하기 전에는 기본 배포 주소로 검수 가능합니다.
+
+### 수정 후 재배포
+npm run build
+firebase deploy
