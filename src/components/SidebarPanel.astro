@@ -2,13 +2,20 @@
 import { company, sidebarItems } from "../data/company";
 interface Props { activeKey?: string; showButton?: boolean; }
 const { activeKey = "", showButton = true } = Astro.props;
+const normalizedActiveKey = activeKey.startsWith("kyocera-")
+  ? activeKey.includes("printer")
+    ? "printer"
+    : activeKey.includes("bw-")
+      ? "bw-mfp"
+      : "color-mfp"
+  : activeKey;
 ---
 <aside class="hero-catalog__panel sidebar-panel">
   <div class="hero-catalog__block">
     <p class="hero-catalog__label">PRODUCT</p>
     <ul class="hero-catalog__menu">
       {sidebarItems.map((item) => (
-        <li><a class:list={["hero-catalog__menu-link", (activeKey === item.key || (item.key === "kyocera" && activeKey.startsWith("kyocera-"))) && "is-active"]} href={item.href}><strong>{item.label}</strong><span>{item.section}</span></a></li>
+        <li><a class:list={["hero-catalog__menu-link", normalizedActiveKey === item.key && "is-active"]} href={item.href}><strong>{item.label}</strong><span>{item.section}</span></a></li>
       ))}
     </ul>
   </div>

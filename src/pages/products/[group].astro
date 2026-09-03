@@ -4,8 +4,20 @@ import ProductCard from "../../components/ProductCard.astro";
 import SidebarPanel from "../../components/SidebarPanel.astro";
 import { company, sidebarItems } from "../../data/company";
 import { visibleProducts } from "../../data/products";
+import { supplies, supplyModels } from "../../data/supplies";
+import SupplyCard from "../../components/SupplyCard.astro";
 
 const groupMeta = {
+  "color-mfp": {
+    title: "컬러복합기",
+    description: "",
+    activeKey: "color-mfp"
+  },
+  "bw-mfp": {
+    title: "흑백복합기",
+    description: "",
+    activeKey: "bw-mfp"
+  },
   rental: {
     title: "렌탈임대 제품",
     description: "",
@@ -55,6 +67,8 @@ const groupMeta = {
 
 export function getStaticPaths() {
   return [
+    { params: { group: "color-mfp" } },
+    { params: { group: "bw-mfp" } },
     { params: { group: "rental" } },
     { params: { group: "multifunction" } },
     { params: { group: "printer" } },
@@ -70,7 +84,42 @@ export function getStaticPaths() {
 const group = Astro.params.group as keyof typeof groupMeta;
 const meta = groupMeta[group];
 const activeKey = meta.activeKey;
-const filteredProducts = visibleProducts.filter((product) => product.listingGroup === group);
+const filteredProducts = visibleProducts.filter((product) => {
+  const listingGroup = product.listingGroup;
+  const normalizedCategory = product.category.replace(/\s/g, "");
+
+  if (group === "color-mfp") {
+    return normalizedCategory.includes("컬러복합기");
+  }
+
+  if (group === "bw-mfp") {
+    return normalizedCategory.includes("흑백복합기");
+  }
+
+  if (group === "rental" || group === "multifunction") {
+    return (
+      listingGroup === group ||
+      listingGroup === "kyocera-color-mfp" ||
+      listingGroup === "kyocera-bw-mfp"
+    );
+  }
+
+  if (group === "printer") {
+    return (
+      listingGroup === "printer" ||
+      listingGroup === "kyocera-color-printer" ||
+      listingGroup === "kyocera-bw-printer"
+    );
+  }
+
+  return listingGroup === group;
+});
+const kyoceraSupplyGroups = [
+  { label: "컬러복합기", models: ["TASKalfa 2554ciG", "TASKalfa 3554ciG", "TASKalfa 4054ciG", "ECOSYS MA3500cifx"] },
+  { label: "흑백복합기", models: ["TASKalfa MZ3200i", "TASKalfa MZ4000i"] },
+  { label: "컬러프린터", models: ["ECOSYS PA3500cx"] }
+];
+const kyoceraSupplyModels = kyoceraSupplyGroups.flatMap((group) => group.models);
 ---
 
 <BaseLayout
@@ -107,46 +156,26 @@ const filteredProducts = visibleProducts.filter((product) => product.listingGrou
 
           {activeKey === "supplies" && (
             <section class="supplies-categories" aria-label="소모품 브랜드 및 제품 분류">
-              <nav class="supplies-brand-tabs" aria-label="소모품 브랜드">
-                <button class="is-active" type="button" data-supplies-brand="sindoh" aria-controls="supplies-sindoh" aria-selected="true">신도</button>
-                <button type="button" data-supplies-brand="kyocera" aria-controls="supplies-kyocera" aria-selected="false">교세라</button>
-              </nav>
-
-              <div class="supplies-category-panel is-active" id="supplies-sindoh" data-supplies-panel="sindoh">
-                <p class="supplies-category-panel__label">신도 소모품</p>
-                <div class="supplies-subcategory-grid">
-                  <a href="#supplies-sindoh-d450">D450</a>
-                  <a href="#supplies-sindoh-d320">D320</a>
-                  <a href="#supplies-sindoh-d470">D470</a>
-                </div>
+              <div class="supplies-filter-area">
+              <div class="supplies-filter-groups" aria-label="소모품 필터">
+                <div class="supplies-filter-group"><label for="supply-filter-brand">브랜드</label><select id="supply-filter-brand" data-filter-group="brand" aria-label="브랜드 필터"><option value="all">전체</option><option value="sindoh">신도</option><option value="kyocera">교세라</option></select></div>
+                <div class="supplies-filter-group"><label for="supply-filter-model">제품명</label><select id="supply-filter-model" data-filter-group="model" aria-label="제품명 필터"><option value="all" data-model-brand="all">전체</option>{supplyModels.map((model) => <option value={model} data-model-brand="sindoh">{model}</option>)}{kyoceraSupplyModels.map((model) => <option value={model} data-model-brand="kyocera">{model}</option>)}</select></div>
+                <div class="supplies-filter-group"><label for="supply-filter-color">색상</label><select id="supply-filter-color" data-filter-group="color" aria-label="색상 필터"><option value="all">전체</option><option value="검정">검정</option><option value="파랑">파랑</option><option value="빨강">빨강</option><option value="노랑">노랑</option></select></div>
+                <div class="supplies-filter-group"><label for="supply-filter-kind">유형</label><select id="supply-filter-kind" data-filter-group="kind" aria-label="상품 유형 필터"><option value="all">전체</option><option value="정품">정품</option><option value="재생">재생</option></select></div>
+                <div class="supplies-filter-group"><label for="supply-sort">정렬</label><select id="supply-sort" aria-label="상품 정렬"><option value="default">기본순</option><option value="name-asc">이름순</option><option value="name-desc">이름 역순</option></select></div>
+              </div>
+              <button class="supplies-filter-reset" type="button" id="supply-filter-reset">초기화</button>
               </div>
 
-              <div class="supplies-category-panel" id="supplies-kyocera" data-supplies-panel="kyocera" hidden>
-                <p class="supplies-category-panel__label">교세라 소모품</p>
-                <div class="supplies-product-group">
-                  <h2>복합기</h2>
-                  <div class="supplies-subcategory-grid supplies-subcategory-grid--three">
-                    <a href="#supplies-kyocera-taskalfa-2554cig">TASKalfa 2554ciG</a>
-                    <a href="#supplies-kyocera-taskalfa-3554cig">TASKalfa 3554ciG</a>
-                    <a href="#supplies-kyocera-taskalfa-4054cig">TASKalfa 4054ciG</a>
-                    <a href="#supplies-kyocera-taskalfa-mz3200i">TASKalfa MZ3200i</a>
-                    <a href="#supplies-kyocera-taskalfa-mz4000i">TASKalfa MZ4000i</a>
-                    <a href="#supplies-kyocera-ecosys-ma3500cifx">ECOSYS MA3500cifx</a>
-                  </div>
-                </div>
-                <div class="supplies-product-group">
-                  <h2>프린터</h2>
-                  <div class="supplies-subcategory-grid supplies-subcategory-grid--one">
-                    <a href="#supplies-kyocera-ecosys-pa3500cx">ECOSYS PA3500cx</a>
-                  </div>
-                </div>
+              <div class="supply-grid supplies-all-grid product-list" data-category="supplies">
+                {supplies.map((supply) => <div class="supply-filter-item" data-supply-brand="sindoh" data-supply-model={supply.model} data-supply-colors={supply.format === "4색 세트" ? "검정 파랑 빨강 노랑" : supply.color} data-supply-kind={supply.kind}><SupplyCard supply={supply} /></div>)}
               </div>
-              <p class="supplies-category-note">제품을 선택하면 해당 모델의 소모품을 추가할 수 있습니다.</p>
+              <nav class="supplies-pagination product-pagination" aria-label="소모품 페이지 이동"></nav>
+
             </section>
           )}
-
           {activeKey !== "supplies" && <div class="product-grid">
-            {filteredProducts.map((product) => <ProductCard product={product} />)}
+            {filteredProducts.map((product) => <div class="catalog-item"><ProductCard product={product} /></div>)}
           </div>}
           {activeKey !== "supplies" && filteredProducts.length === 0 && (
             <div class="product-empty">
@@ -155,31 +184,120 @@ const filteredProducts = visibleProducts.filter((product) => product.listingGrou
               <a class="button button--secondary" href="/contact">제품 문의하기</a>
             </div>
           )}
+          {activeKey !== "supplies" && <nav class="supplies-pagination product-pagination" aria-label={`${meta.title} 페이지 이동`}></nav>}
         </div>
       </div>
     </div>
   </section>
 </BaseLayout>
 
-{activeKey === "supplies" && (
-  <script>
-    const brandButtons = document.querySelectorAll<HTMLButtonElement>("[data-supplies-brand]");
-    const brandPanels = document.querySelectorAll<HTMLElement>("[data-supplies-panel]");
+<script>
+    (() => {
+    const filterControls = document.querySelectorAll<HTMLSelectElement>("select[data-filter-group]");
+    const modelControl = document.querySelector<HTMLSelectElement>('select[data-filter-group="model"]');
+    const sortControl = document.querySelector<HTMLSelectElement>("#supply-sort");
+    const resetControl = document.querySelector<HTMLButtonElement>("#supply-filter-reset");
+    const supplyItems = document.querySelectorAll<HTMLElement>(".supply-filter-item");
+    const defaultSupplyItems = Array.from(supplyItems);
+    const supplyGrid = document.querySelector<HTMLElement>(".supplies-all-grid");
+    const productList = document.querySelector<HTMLElement>(".product-list[data-category='supplies']");
+    const productGrid = document.querySelector<HTMLElement>(".product-grid");
+    const pagination = document.querySelector<HTMLElement>(".product-pagination") ?? document.querySelector<HTMLElement>(".supplies-pagination");
+    const suppliesCategories = document.querySelector<HTMLElement>(".supplies-categories");
+    const pageSize = productList ? 10 : 9;
+    let currentPage = 1;
+    const selectedFilters: Record<string, string> = { brand: "all", model: "all", color: "all", kind: "all" };
 
-    brandButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const brand = button.dataset.suppliesBrand;
-        brandButtons.forEach((item) => {
-          const isActive = item === button;
-          item.classList.toggle("is-active", isActive);
-          item.setAttribute("aria-selected", String(isActive));
-        });
-        brandPanels.forEach((panel) => {
-          const isActive = panel.dataset.suppliesPanel === brand;
-          panel.classList.toggle("is-active", isActive);
-          panel.hidden = !isActive;
-        });
+    const applyFilters = () => {
+      const isFiltered = Object.values(selectedFilters).some((value) => value !== "all");
+      suppliesCategories?.classList.toggle("is-filtered", isFiltered);
+      if (supplyGrid) {
+        const orderedItems = sortControl?.value === "name-asc"
+          ? Array.from(supplyItems).sort((a, b) => (a.textContent ?? "").localeCompare(b.textContent ?? "", "ko"))
+          : sortControl?.value === "name-desc"
+            ? Array.from(supplyItems).sort((a, b) => (b.textContent ?? "").localeCompare(a.textContent ?? "", "ko"))
+            : defaultSupplyItems;
+        orderedItems.forEach((item) => supplyGrid.appendChild(item));
+      }
+
+      const matchingItems = Array.from(supplyItems).filter((item) => {
+        const matchesBrand = selectedFilters.brand === "all" || item.dataset.supplyBrand === selectedFilters.brand;
+        const matchesModel = selectedFilters.model === "all" || item.dataset.supplyModel === selectedFilters.model;
+        const matchesColor = selectedFilters.color === "all" || (item.dataset.supplyColors ?? "").split(" ").includes(selectedFilters.color);
+        const matchesKind = selectedFilters.kind === "all" || item.dataset.supplyKind === selectedFilters.kind;
+        return matchesBrand && matchesModel && matchesColor && matchesKind;
+      });
+      renderPagination(matchingItems);
+    };
+
+    const renderPagination = (matchingItems: HTMLElement[]) => {
+      const totalPages = Math.max(1, Math.ceil(matchingItems.length / pageSize));
+      currentPage = Math.min(currentPage, totalPages);
+      const allItems = productList ? Array.from(productList.querySelectorAll<HTMLElement>(".supply-filter-item")) : Array.from(productGrid?.querySelectorAll<HTMLElement>(".catalog-item") ?? []);
+      allItems.forEach((item) => { item.hidden = true; });
+      matchingItems.slice((currentPage - 1) * pageSize, currentPage * pageSize).forEach((item) => { item.hidden = false; });
+
+      if (pagination) {
+        pagination.textContent = "";
+        if (totalPages >= 1) {
+          for (let page = 1; page <= totalPages; page += 1) {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.textContent = String(page);
+            button.classList.toggle("is-active", page === currentPage);
+            button.setAttribute("aria-label", `${page}페이지 보기`);
+            button.setAttribute("aria-current", page === currentPage ? "page" : "false");
+            button.addEventListener("click", () => {
+              currentPage = page;
+              if (productList) {
+                applyFilters();
+              } else if (productGrid) {
+                renderPagination(Array.from(productGrid.querySelectorAll<HTMLElement>(".catalog-item")));
+              }
+            });
+            pagination.appendChild(button);
+          }
+        }
+      }
+    };
+
+    filterControls.forEach((control) => {
+      control.addEventListener("change", () => {
+        const group = control.dataset.filterGroup ?? "";
+        selectedFilters[group] = control.value;
+        currentPage = 1;
+        if (group === "brand") {
+          selectedFilters.model = "all";
+          if (modelControl) {
+            modelControl.value = "all";
+            Array.from(modelControl.options).forEach((option) => {
+              const isAll = option.value === "all";
+              const modelBrand = option.dataset.modelBrand ?? "all";
+              option.hidden = !isAll && selectedFilters.brand !== "all" && modelBrand !== selectedFilters.brand;
+            });
+          }
+        }
+        if (group === "model" && modelControl) {
+          Array.from(modelControl.options).forEach((option) => {
+            option.hidden = selectedFilters.brand !== "all" && option.value !== "all" && option.dataset.modelBrand !== selectedFilters.brand;
+          });
+        }
+        applyFilters();
       });
     });
-  </script>
-)}
+    sortControl?.addEventListener("change", () => { currentPage = 1; applyFilters(); });
+    resetControl?.addEventListener("click", () => {
+      filterControls.forEach((control) => { control.value = "all"; });
+      if (sortControl) sortControl.value = "default";
+      Object.keys(selectedFilters).forEach((key) => { selectedFilters[key] = "all"; });
+      if (modelControl) Array.from(modelControl.options).forEach((option) => { option.hidden = false; });
+      currentPage = 1;
+      applyFilters();
+    });
+    if (productList) {
+      applyFilters();
+    } else if (productGrid) {
+      renderPagination(Array.from(productGrid.querySelectorAll<HTMLElement>(".catalog-item")));
+    }
+    })();
+</script>

@@ -2,8 +2,10 @@
 import type { Product } from "../types";
 interface Props { product: Product; }
 const { product } = Astro.props;
+const isSindoh = product.id.startsWith("sindoh-");
+const isShredder = product.listingGroup === "shredder";
 ---
-<a class="product-card" href={`/products/detail/${product.id}`} aria-label={`${product.name} 상세정보 보기`}>
+<a class:list={["product-card", { "product-card--sindoh": isSindoh, "product-card--shredder": isShredder }]} href={`/products/detail/${product.id}`} aria-label={`${product.name} 상세정보 보기`}>
   <div class="product-card__image-wrap">
     <img class="product-card__image" src={product.image} alt={`${product.name} 제품 이미지`} loading="lazy" width="640" height="420" />
     <span class="product-card__category">{product.category}</span>

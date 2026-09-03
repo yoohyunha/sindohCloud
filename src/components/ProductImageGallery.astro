@@ -5,9 +5,10 @@ interface Props {
 }
 
 const { images, productName } = Astro.props;
+const isMz4000i = productName.includes("MZ4000i");
 ---
 
-<div class="product-detail__media product-gallery" data-product-gallery>
+<div class:list={["product-detail__media", "product-gallery", { "product-gallery--mz4000i": isMz4000i }]} data-product-gallery>
   <div class="product-gallery__viewport">
     {images.map((image, index) => (
       <img

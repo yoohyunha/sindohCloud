@@ -1,8 +1,10 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import ProductImageGallery from "../../../components/ProductImageGallery.astro";
+import SupplyCard from "../../../components/SupplyCard.astro";
 import { company } from "../../../data/company";
 import { products } from "../../../data/products";
+import { supplies } from "../../../data/supplies";
 import type { Product } from "../../../types";
 
 export function getStaticPaths() {
@@ -12,10 +14,22 @@ interface Props { product: Product; }
 const { product } = Astro.props;
 const galleryImages = product.gallery?.length ? product.gallery : [product.image];
 const detailImageCropHeight = product.detailImageCropHeight;
+const supplyModel = ["D320", "D450", "D470"].find((model) => product.name.includes(model));
+const recommendedSupplies = supplyModel ? supplies.filter((supply) => supply.model === supplyModel) : [];
+const normalizedCategory = product.category.replace(/\s/g, "");
+const productListHref = normalizedCategory.includes("컬러복합기")
+  ? "/products/color-mfp"
+  : normalizedCategory.includes("흑백복합기")
+    ? "/products/bw-mfp"
+    : normalizedCategory.includes("프린터")
+      ? "/products/printer"
+      : normalizedCategory.includes("문서세단기")
+        ? "/products/shredder"
+        : "/products";
 ---
 <BaseLayout title={`${product.name} 상세정보 | ${company.name}`} description={product.description} path={`/products/detail/${product.id}`}>
   <section class="product-detail"><div class="container">
-    <a class="product-detail__back" href="/products">← 제품 목록</a>
+    <a class="product-detail__back" href={productListHref}>← 제품 목록으로 돌아가기</a>
     <div class="product-detail__hero">
       <ProductImageGallery images={galleryImages} productName={product.name} />
       <div class="product-detail__summary">
@@ -24,6 +38,7 @@ const detailImageCropHeight = product.detailImageCropHeight;
         <div class="hero__actions"><a class="button" href="/contact">렌탈·구매 상담</a><a class="button button--secondary" href={product.storeUrl} target="_blank" rel="noreferrer">스마트스토어에서 보기</a>{product.officialUrl && <a class="button button--secondary" href={product.officialUrl} target="_blank" rel="noreferrer">공식 제품 페이지</a>}</div>
       </div>
     </div>
+    <div class="product-detail__device-info-heading"><p class="section-heading__eyebrow">DEVICE INFORMATION</p><h2>복합기 상세정보</h2></div>
     <div class="product-detail__grid">
       <section class="product-detail__section"><p class="section-heading__eyebrow">KEY FEATURES</p><h2>주요 특징</h2><ul class="product-detail__features">{product.features?.map((feature) => <li>{feature}</li>)}</ul></section>
       <section class="product-detail__section"><p class="section-heading__eyebrow">SPECIFICATIONS</p><h2>핵심 사양</h2><dl class="spec-table">{product.details?.map((item) => <div><dt>{item.label}</dt><dd>{item.value}</dd></div>)}</dl></section>
@@ -49,5 +64,34 @@ const detailImageCropHeight = product.detailImageCropHeight;
         )}
       </section>
     )}
+    {recommendedSupplies.length > 0 && (
+      <section class="product-detail__recommendations">
+        <div class="product-detail__recommendations-heading">
+          <div><p class="section-heading__eyebrow">SUPPLIES FOR THIS DEVICE</p><h2>{supplyModel} 호환 토너</h2><p class="product-detail__recommendations-description">이 복합기에 사용할 수 있는 정품·재생 토너입니다.</p></div>
+          <a class="button button--secondary" href={`/products/supplies#${supplyModel?.toLowerCase()}`}>토너 전체보기</a>
+        </div>
+        <div class="product-detail__recommendations-carousel">
+          <button class="recommendation-scroll-button recommendation-scroll-button--prev" type="button" aria-label="추천 토너 이전 상품" data-recommendation-prev>‹</button>
+          <div class="supply-grid" data-recommendation-track>
+            {recommendedSupplies.map((supply) => <SupplyCard supply={supply} />)}
+          </div>
+          <button class="recommendation-scroll-button recommendation-scroll-button--next" type="button" aria-label="추천 토너 다음 상품" data-recommendation-next>›</button>
+        </div>
+      </section>
+    )}
   </div></section>
 </BaseLayout>
+
+<script>
+  const recommendationTrack = document.querySelector<HTMLElement>("[data-recommendation-track]");
+  const recommendationPrev = document.querySelector<HTMLButtonElement>("[data-recommendation-prev]");
+  const recommendationNext = document.querySelector<HTMLButtonElement>("[data-recommendation-next]");
+
+  if (recommendationTrack && recommendationPrev && recommendationNext) {
+    const scrollRecommendations = (direction: number) => {
+      recommendationTrack.scrollBy({ left: direction * recommendationTrack.clientWidth * 0.78, behavior: "smooth" });
+    };
+    recommendationPrev.addEventListener("click", () => scrollRecommendations(-1));
+    recommendationNext.addEventListener("click", () => scrollRecommendations(1));
+  }
+</script>

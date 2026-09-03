@@ -5,11 +5,11 @@ import SidebarPanel from "../components/SidebarPanel.astro";
 import { company } from "../data/company";
 import { visibleProducts } from "../data/products";
 ---
-<BaseLayout title={`${company.name} | 주력 복합기`} description="D450, D470, D320 제품 비교 및 상세정보" path="/products">
+<BaseLayout title={`${company.name} | 전체 제품`} description="" path="/products">
   <section class="service-page"><div class="container service-page__grid">
     <SidebarPanel />
     <div class="service-content"><div class="product-shell">
-      <div class="product-shell__hero"><div><p class="service-content__eyebrow">PRODUCT DIRECTORY</p><h1>주력 복합기 한눈에 비교하기</h1><p class="product-shell__summary">D450·D470·D320의 핵심 사양과 특징을 확인한 뒤 상담 또는 스마트스토어로 이동하세요.</p></div><div class="product-shell__meta"><span>총 {visibleProducts.length}개 모델</span></div></div>
+      <div class="product-shell__hero"><div><p class="service-content__eyebrow">PRODUCT DIRECTORY</p><h1>전체 제품</h1><p class="product-shell__summary">렌탈·구매 상담이 필요하시면 편하게 문의주세요.</p></div><div class="product-shell__meta"><span>총 {visibleProducts.length}개 모델</span></div></div>
       <div class="product-grid">{visibleProducts.map((product) => <ProductCard product={product} />)}</div>
     </div></div>
   </div></section>

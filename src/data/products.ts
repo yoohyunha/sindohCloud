@@ -11,7 +11,7 @@ const pa3500cxCatalogImages = Array.from({ length: 6 }, (_, index) => `/catalogs
 
 export const products: Product[] = [
   {
-    id: "sindoh-d470", name: "신도 A3 컬러복합기 D470", category: "A3 컬러 복합기", listingGroup: "rental", price: "렌탈·구매 상담",
+    id: "sindoh-d470", name: "신도 A3 컬러복합기 D470", category: "A3 컬러복합기", listingGroup: "rental", price: "렌탈·구매 상담",
     spec: "컬러/흑백 25 ppm · 스캔 80 ipm · 1,200 dpi · 10.1″ 컬러 패널",
     description: "시그니처 복합기, 강력한 성능과 다양한 편의 기능으로 스마트한 오피스 환경을 구성할 수 있습니다.",
     image: "/images/enlarged/D470-official.png",
@@ -40,9 +40,9 @@ export const products: Product[] = [
     ], featured: true, visible: true
   },
   {
-    id: "sindoh-d450", name: "신도 A3 컬러복합기 D450", category: "A3 컬러 복합기", listingGroup: "multifunction", price: "렌탈·구매 상담",
+    id: "sindoh-d450", name: "신도 A3 컬러복합기 D450", category: "A3 컬러복합기", listingGroup: "multifunction", price: "렌탈·구매 상담",
     spec: "컬러/흑백 25 ppm · 스캔 80 ipm · 8GB · 256GB SSD",
-    description: "직관적인 대형 화면과 안정적인 문서 급지 구조를 갖춘 검증된 컬러 복합기입니다. 다양한 IT 서비스를 편리하게 사용할 수 있습니다.",
+    description: "직관적인 대형 화면과 안정적인 문서 급지 구조를 갖춘 검증된 컬러복합기입니다. 다양한 IT 서비스를 편리하게 사용할 수 있습니다.",
     image: "/images/enlarged/d450-official/d450-1.png",
     gallery: [
       "/images/enlarged/d450-official/d450-1.png",
@@ -69,7 +69,7 @@ export const products: Product[] = [
     ], featured: true, visible: true
   },
   {
-    id: "sindoh-d320-rental", name: "신도 A3 컬러복합기 D320", category: "A3 컬러 복합기", listingGroup: "rental", price: "렌탈·구매 상담",
+    id: "sindoh-d320-rental", name: "신도 A3 컬러복합기 D320", category: "A3 컬러복합기", listingGroup: "rental", price: "렌탈·구매 상담",
     spec: "컬러/흑백 22 ppm · 스캔 55 ipm · 6GB · 256GB SSD",
     description: "출력·복사·스캔·팩스·USB 기능을 하나로 구성한 실속형 모델입니다. 9인치 컬러 화면과 넉넉한 기본 급지량을 갖췄습니다.",
     image: "/images/enlarged/D320-official.png",
@@ -218,6 +218,11 @@ export const products: Product[] = [
     spec: "교세라 A3 흑백복합기",
     description: "흑백 문서 중심의 사무 환경을 위한 교세라 A3 흑백복합기입니다.",
     image: "/images/enlarged/kyocera/taskalfa-mz4000i.jpg", storeUrl: "https://smartstore.naver.com/royaloa",
+    gallery: [
+      "/images/enlarged/kyocera/taskalfa-mz4000i.jpg",
+      "/images/enlarged/kyocera/gallery/mz4000i-front.jpg",
+      "/images/enlarged/kyocera/gallery/mz4000i-front-angle.jpg"
+    ],
     officialUrl: "https://www.kyoceradocumentsolutions.com/kr/ko/products/mfp/taskalfa-mz4000i/index.html",
     catalogUrl: "/catalogs/kyocera-taskalfa-mz3200i-mz4000i.pdf",
     detailImages: mzCatalogImages,
@@ -229,6 +234,11 @@ export const products: Product[] = [
     spec: "교세라 A3 흑백복합기",
     description: "일상적인 문서 출력과 스캔 업무에 적합한 교세라 A3 흑백복합기입니다.",
     image: "/images/enlarged/kyocera/taskalfa-mz3200i.jpg", storeUrl: "https://smartstore.naver.com/royaloa",
+    gallery: [
+      "/images/enlarged/kyocera/taskalfa-mz3200i.jpg",
+      "/images/enlarged/kyocera/gallery/mz3200i-front.jpg",
+      "/images/enlarged/kyocera/gallery/mz3200i-front-angle.jpg"
+    ],
     officialUrl: "https://www.kyoceradocumentsolutions.com/kr/ko/products/mfp/taskalfa-mz4000i/index.html",
     catalogUrl: "/catalogs/kyocera-taskalfa-mz3200i-mz4000i.pdf",
     detailImages: mzCatalogImages,

@@ -25,6 +25,21 @@ export type Product = {
   visible: boolean;
 };
 
+export type SupplyProduct = {
+  id: string;
+  model: string;
+  name: string;
+  kind: "정품" | "재생";
+  format: "단품" | "4색 세트";
+  color?: "검정" | "파랑" | "빨강" | "노랑";
+  cartridge: string;
+  price: string;
+  spec: string;
+  description: string;
+  image: string;
+  officialUrl?: string;
+};
+
 export type CompanyInfo = {
   name: string;
   tagline: string;

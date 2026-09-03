@@ -1,0 +1,14 @@
+---
+import type { SupplyProduct } from "../types";
+const { supply } = Astro.props as { supply: SupplyProduct };
+---
+<a class="supply-card" href={`/products/supply/${supply.id}`} aria-label={`${supply.name} 상세정보 보기`}>
+  <div class="supply-card__image"><img src={supply.image} alt={`${supply.model} ${supply.kind} 토너`} loading="lazy" /></div>
+  <div class="supply-card__body">
+    <div class="supply-card__tags"><span>{supply.model}</span><span>{supply.kind}</span><span>{supply.format}</span></div>
+    <h3>{supply.name}</h3>
+    <p class="supply-card__spec">{supply.spec}</p>
+    <p class="supply-card__description">{supply.description}</p>
+    <div class="supply-card__footer"><strong>{supply.price}</strong><span>상담·주문 가능</span></div>
+  </div>
+</a>
